@@ -12,34 +12,33 @@ import React, {
 } from 'react-native';
 import {Background} from './src/components/UI';
 import {TabBar} from './src/components/tab';
-import HomeScene from './src/components/HomeScene';
-
-// onForward={() => {
-//   var nextIndex = route.index + 1;
-//   navigator.push({
-//     name: 'Scene ' + nextIndex,
-//     index: nextIndex,
-//   });
-// }}
-// onBack={() => {
-//   if (route.index > 0) {
-//     navigator.pop();
-//   }
-// }}
+import NavigationBar from './src/components/nav';
+import HomeScene, {PickSchoolScene} from './src/components/HomeScene';
 
 class GreatSchool extends Component {
   componentWillMount() {
     StatusBarIOS.setStyle('light-content');
   }
 
+  renderScene(route, navigator) {
+    console.log(route.name);
+    switch (route.name) {
+    case "home-step1":
+      return <HomeScene navigator={navigator} />
+      break;
+    case "home-step2":
+      return <PickSchoolScene navigator={navigator} />
+      break;
+    }
+  }
+
   render() {
     return (
-      <Background>
+      <Background type={'home-step1'}>
         <Navigator
-          initialRoute={{name: 'Home step 1', index: 0}}
-          renderScene={(route, navigator) =>
-            <HomeScene />
-          }
+          initialRoute={{name: 'home-step1', index: 0}}
+          renderScene={this.renderScene.bind(this)}
+          navigationBar={NavigationBar}
         />
       <TabBar />
       </Background>
@@ -47,5 +46,9 @@ class GreatSchool extends Component {
   }
 }
 
+const styles = StyleSheet.create({
+  navigationBar: {
+  },
+});
 
 AppRegistry.registerComponent('GreatSchool', () => GreatSchool);

@@ -6,47 +6,63 @@ import React, {
   Text,
   Image,
   View,
+  Navigator,
+  TouchableOpacity,
 } from 'react-native';
-
-export class NavigationBar extends Component {
-  static propTypes = {
-    title: React.PropTypes.string
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  render() {
-    var title;
-    if (this.props.title != null) {
-      title = <Text style={styles.title}>{this.props.title}</Text>;
-    } else {
-      title = <Image style={styles.logo} source={{uri: 'logo'}} />;
-    }
-    return <View style={styles.navigationBar}>{title}</View>;
-  }
-}
 
 const styles = StyleSheet.create({
   navigationBar: {
-    flex: 0,
+    height: 100
+
   },
   logo: {
     width: 107,
     height: 25,
-    alignSelf: 'center',
-    flex: 1,
-    marginTop: 45,
   },
   title: {
-    flex: 1,
-    paddingTop: 59,
-    textAlign: 'center',
     fontFamily: 'ProximaNova-Bold',
     fontSize: 18,
     color: '#FFFFFF'
   }
 });
+
+const NavigationBarRouteMapper = {
+  LeftButton: (route, navigator, index, navState) => {
+    if (index === 0) {
+      return null
+    }
+    const previousRoute = navState.routeStack[index - 1]
+    return (
+      <TouchableOpacity
+        onPress={() => navigator.pop()}>
+        <Text style={styles.navText}>
+          {previousRoute.title}
+        </Text>
+      </TouchableOpacity>
+    )
+  },
+  RightButton: (route, navigator, index, navState) => {
+    if (route.rightElement) {
+      return route.rightElement
+    }
+  },
+
+  Title(route, navigator, index, navState) {
+    var title;
+    if (route.title != null) {
+      title = <Text style={styles.title}>{route.title}</Text>;
+    } else {
+      title = <Image style={styles.logo} source={{uri: 'logo'}} />;
+    }
+    return (
+      <View style={{flexDirection: 'column', flex: 1, justifyContent: 'flex-end'}}>
+        {title}
+      </View>
+    );
+
+  }
+};
+
+export default (
+  <Navigator.NavigationBar routeMapper={NavigationBarRouteMapper} style={styles.navigationBar}/>
+);

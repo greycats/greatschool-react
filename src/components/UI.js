@@ -11,12 +11,23 @@ import LinearGradient from 'react-native-linear-gradient';
 
 export class Background extends Component {
   render() {
-    return (
+    switch (this.props.type) {
+    case 'home-step1':
+      return <LinearGradient style={{flex: 1}}
+        colors={['#176BC3', '#30B1D7']} start={[0, 0]} end={[0.23, 1]}
+        {...this.props} />;
+    case 'home-step2':
+      return <LinearGradient style={{flex: 1}}
+        colors={['#1769C2', '#38C8DD']} start={[0.26, 0.12]} end={[0.14, 0.98]}
+        {...this.props} />;
+    default:
+      return (
       <LinearGradient style={{flex: 1}}
         colors={['#1076CD', '#2BACD0', '#31BBDE']}
         locations={[0, 0.85, 0.93]} start={[0.17, 0]} end={[0.4, 1]}
         {...this.props} />
-    );
+      );
+    }
   }
 }
 

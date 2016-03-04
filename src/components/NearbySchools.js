@@ -10,7 +10,11 @@ import {GradientText} from './gradient';
 import {Button} from './UI';
 import Actions from '../actions/Actions'
 
-export default class SchoolsCount extends Component {
+export default class NearbySchools extends Component {
+  static propTypes = {
+    onExplore: React.PropTypes.func.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -29,7 +33,7 @@ export default class SchoolsCount extends Component {
         <Text style={styles.text}>SCHOOLS IN THIS </Text>
         <Text style={[styles.text, styles.underline]}>NEIGHBORHOOD</Text>
       </View>
-      <Button title="Let's explore" onClick={e=>{Actions.exploreNearbySchools}} />
+      <Button title="Let's explore" onClick={this.props.onExplore} />
       </View>
     );
   }
