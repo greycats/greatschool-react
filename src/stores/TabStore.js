@@ -1,12 +1,12 @@
 'use strict';
 
 import alt from '../alt'
-import TabAction from '../actions/TabActions'
+import Actions from '../actions/Actions'
 
 class TabStore {
   constructor() {
     this.bindListeners({
-      switchTab: TabAction.switchTab
+      switchTab: Actions.switchTab
     });
     this.state = {
       selectedTab: 0

@@ -26,11 +26,14 @@ export class NavigationBar extends Component {
     } else {
       title = <Image style={styles.logo} source={{uri: 'logo'}} />;
     }
-    return <View>{title}</View>;
+    return <View style={styles.navigationBar}>{title}</View>;
   }
 }
 
 const styles = StyleSheet.create({
+  navigationBar: {
+    flex: 0,
+  },
   logo: {
     width: 107,
     height: 25,

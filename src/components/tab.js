@@ -9,9 +9,8 @@ import React, {
   Image,
   TouchableHighlight,
 } from 'react-native';
-import alt from '../alt';
 import TabStore from '../stores/TabStore';
-import TabActions from '../actions/TabActions';
+import Actions from '../actions/Actions';
 import connectToStores from 'alt-utils/lib/connectToStores';
 
 class TabBarItem extends Component {
@@ -31,7 +30,7 @@ class TabBarItem extends Component {
   };
 
   onSelect() {
-    TabActions.switchTab(this.props.id);
+    Actions.switchTab(this.props.id);
   }
 
   render() {

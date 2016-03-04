@@ -27,7 +27,7 @@ export class Divider extends Component {
     var locations = [0, 0.25, 0.75, 1];
 
     return (
-      <View style={{flex: 1}}>
+      <View>
       <LinearGradient style={styles.divider}
         colors={['#ffffff0f', '#ffffff68', '#ffffff68', '#ffffff0f']}
         locations={locations} start={start} end={end} />
@@ -51,43 +51,42 @@ export class Button extends Component {
 
   render() {
     return (
-      <TouchableHighlight onPress={this._onPressButton}>
-      <View style={styles.buttonWrapper}>
-        <LinearGradient style={styles.button}
-          colors={['#AEE248', '#76C223']}>
-          <Text style={styles.buttonText}>{this.props.title}</Text>
-        </LinearGradient>
+      <TouchableHighlight style={styles.container} onPress={this.props.onClick} underlayColor={'transparent'}>
+        <View>
+          <LinearGradient style={styles.button}
+            colors={['#AEE248', '#76C223']}>
+            <Text style={styles.buttonText}>{this.props.title}</Text>
+          </LinearGradient>
         </View>
       </TouchableHighlight>
     );
   }
 }
+
 const styles = React.StyleSheet.create({
+  container: {
+    alignSelf: 'center',
+  },
   divider: {
     height: 1,
     marginBottom: 2
   },
-  buttonWrapper: {
-    alignSelf: 'center',
-    paddingBottom: 15
-  },
   button: {
-    flexDirection: 'column',
-    width: 175,
     borderRadius: 5,
-    height: 44,
     backgroundColor: 'black',
+    width: 175,
+    height: 44,
     shadowColor: '#101112',
     shadowOffset: {width: 0, height: 7},
     shadowRadius: 11,
     justifyContent: 'center',
+    alignItems: 'center',
     shadowOpacity: 0.15,
   },
   buttonText: {
     backgroundColor: "transparent",
     fontFamily: 'ProximaNova-Bold',
     fontSize: 15,
-    alignSelf: 'center',
     color: 'white',
     letterSpacing: 1.07,
   }

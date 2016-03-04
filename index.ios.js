@@ -10,7 +10,7 @@ import React, {
   StyleSheet,
   StatusBarIOS
 } from 'react-native';
-import {Background} from './src/components/components';
+import {Background} from './src/components/UI';
 import {TabBar} from './src/components/tab';
 import HomeScene from './src/components/HomeScene';
 

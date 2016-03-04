@@ -7,7 +7,8 @@ import React, {
   Text,
 } from 'react-native';
 import {GradientText} from './gradient';
-import {Button} from './components';
+import {Button} from './UI';
+import Actions from '../actions/Actions'
 
 export default class SchoolsCount extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ export default class SchoolsCount extends Component {
         <Text style={styles.text}>SCHOOLS IN THIS </Text>
         <Text style={[styles.text, styles.underline]}>NEIGHBORHOOD</Text>
       </View>
-      <Button title="Let's explore" />
+      <Button title="Let's explore" onClick={e=>{Actions.exploreNearbySchools}} />
       </View>
     );
   }

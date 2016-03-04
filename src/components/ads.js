@@ -27,7 +27,7 @@ export default class Ads extends Component {
           <Text style={styles.footer}>Content by: GreatKids</Text>
         </View>
         <View style={styles.right}>
-          <TouchableHighlight underlayColor={'transparent'} style={styles.clickable} onPress={this._onPressButton.bind(this)}>
+          <TouchableHighlight underlayColor={'transparent'} onPress={this._onPressButton.bind(this)}>
             <Image style={styles.go} source={{uri: 'go'}} />
           </TouchableHighlight>
         </View>
@@ -38,10 +38,11 @@ export default class Ads extends Component {
 const styles = React.StyleSheet.create({
   ads: {
     flexDirection: 'row',
-    marginLeft: 36,
     marginTop: 18,
-    marginRight: 26,
+    marginLeft: 36,
     marginBottom: 43,
+    marginRight: 26,
+    justifyContent: 'space-between'
   },
   left: {
     flexDirection: 'column',
@@ -50,12 +51,6 @@ const styles = React.StyleSheet.create({
   right: {
     width: 44,
     alignSelf: 'center',
-    flexDirection: 'column'
-  },
-  clickable: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   go: {
     alignSelf: 'flex-end',
@@ -66,7 +61,6 @@ const styles = React.StyleSheet.create({
     fontFamily: 'ProximaNova-Bold',
     fontSize: 14,
     color: 'rgba(255, 255, 255, 0.5)',
-    marginBottom: 11,
   },
   body: {
     fontFamily: 'ProximaNova-Semibold',
@@ -80,6 +74,7 @@ const styles = React.StyleSheet.create({
     flexDirection: 'column',
     lineHeight: 24,
     letterSpacing: 0.6,
+    marginTop: 11,
   },
   footer: {
     marginTop: 9,
