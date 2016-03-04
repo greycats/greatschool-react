@@ -2,7 +2,8 @@
 
 ## to get start with iOS developing
 
-0. assume you have `react-native-cli` installed. @see [Get Started](https://facebook.github.io/react-native/docs/getting-started.html)
+###### assume you have `react-native >= 0.21` installed. @see [Get Started](https://facebook.github.io/react-native/docs/getting-started.html)
+
 1. `npm install`
 2. `rnpm link`
 3. in ios directory: `pod install`
