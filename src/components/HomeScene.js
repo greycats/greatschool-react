@@ -15,11 +15,13 @@ import SchoolsCount from './NearbySchools';
 export default class HomeScene extends Component {
   render() {
     return (
-      <View>
-      <NavigationBar />
       <View style={styles.container}>
-        <SchoolsCount style={styles.schoolsCount} />
-        <Divider/>
+      <NavigationBar />
+      <View style={styles.main}>
+        <View style={styles.wrapper}>
+          <SchoolsCount style={styles.schoolsCount} />
+        </View>
+        <Divider style={styles.divider}/>
         <Ads onClick={e=>{}} style={styles.ads}/>
       </View>
       </View>
@@ -32,9 +34,19 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     flex: 1,
   },
-
-  schoolsCount: {
+  main: {
     flex: 1,
+    justifyContent: 'center'
+  },
+  wrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  divider: {
+    height: 2,
+  },
+  schoolsCount: {
+    alignSelf: 'center',
   },
   ads: {
     alignSelf: 'flex-end',

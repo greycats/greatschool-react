@@ -35,6 +35,11 @@ export default class SchoolsCount extends Component {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -44,9 +49,9 @@ const styles = StyleSheet.create({
     height: 141,
   },
   caption: {
+    alignSelf: 'center',
     flexDirection: 'row',
-    flex: 1,
-    justifyContent: 'center',
+    // justifyContent: 'center',
     marginBottom: 30
   },
   text: {
