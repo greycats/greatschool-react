@@ -6,6 +6,9 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
+    "alt": "^0.18.2",
+    "alt-utils": "^1.0.0",
+    "fbjs": "^0.6.0",
     "react-native": "^0.21.0",
     "react-native-linear-gradient": "^1.5.2"
   }

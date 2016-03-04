@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F2E7D01B56B02069B3B95C19D8F169806BB9339F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E39BB0B0E2BF257872D8181879ED276133E0AB8F" : 0,
+    "F2E7D01B56B02069B3B95C19D8F169806BB9339F" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C0946A1B-5F26-4464-B7DF-C9F207EEE9B2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E39BB0B0E2BF257872D8181879ED276133E0AB8F" : "Greycats.swift\/",
+    "F2E7D01B56B02069B3B95C19D8F169806BB9339F" : "GreatSchool\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "GreatSchool",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ios\/GreatSchool.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:greycats\/Greycats.swift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E39BB0B0E2BF257872D8181879ED276133E0AB8F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:greycats\/greatschool-react.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F2E7D01B56B02069B3B95C19D8F169806BB9339F"
+    }
+  ]
+}

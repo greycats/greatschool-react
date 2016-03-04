@@ -8,10 +8,10 @@ import React, {
   Component,
   Navigator,
   StyleSheet,
+  StatusBarIOS
 } from 'react-native';
-
-import {Background} from './Components/components';
-import {TabBar} from './Components/tabbar';
+import {Background} from './src/components/components';
+import {TabBar} from './src/components/tabbar';
 import {HomeScene} from './home';
 
 // onForward={() => {
@@ -26,7 +26,12 @@ import {HomeScene} from './home';
 //     navigator.pop();
 //   }
 // }}
+
 class GreatSchool extends Component {
+  componentWillMount() {
+    StatusBarIOS.setStyle('light-content');
+  }
+
   render() {
     return (
       <Background>

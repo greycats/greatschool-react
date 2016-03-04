@@ -5,9 +5,9 @@ import React, {
   View,
 } from 'react-native';
 
-import {Divider} from './Components/components';
-import {GradientText} from './Components/gradient';
-import {NavigationBar} from './Components/navbar';
+import {Divider} from './src/components/components';
+import {GradientText} from './src/components/gradient';
+import {NavigationBar} from './src/components/navbar';
 
 class SchoolsCount extends Component {
   constructor(props) {

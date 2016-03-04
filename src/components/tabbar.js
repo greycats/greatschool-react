@@ -8,35 +8,71 @@ import React, {
   StyleSheet,
   Image,
   TouchableHighlight,
-} from 'react-native'
+} from 'react-native';
+import alt from '../alt';
+import TabStore from '../stores/TabStore';
+import TabActions from '../actions/TabActions';
+import connectToStores from 'alt-utils/lib/connectToStores';
 
 class TabBarItem extends Component {
+  static getStores() {
+    return [TabStore];
+  }
+
+  static getPropsFromStores() {
+    return TabStore.getState();
+  }
+
   static propTypes = {
     icon: PropTypes.string,
     name: PropTypes.string,
+    highlighted: PropTypes.bool,
+    id: PropTypes.number
   };
-  constructor(props) {
-    super(props);
-    this.state = {
-      highlighted: false
-    };
-  }
 
   onSelect() {
-    this.setState({highlighted: true});
-    console.log("on select", this);
+    console.log('onSelect', 'TabActions.switchTab', this.props.id);
+    TabActions.switchTab(this.props.id);
   }
 
   render() {
-    var tintSelectedState = this.state.highlighted ? styles.tintHighlighted : styles.tintNormal;
-    var selectedState = this.state.highlighted ? styles.highlighted : styles.normal;
+    let selected = this.props.selectedTab == this.props.id;
+    var tintSelectedState = selected ? styles.tintHighlighted : styles.tintNormal;
+    var selectedState = selected ? styles.highlighted : styles.normal;
     return (
       <TouchableHighlight style={styles.tabbarItem} underlayColor={'transparent'} onPress={this.onSelect.bind(this)}>
         <View>
-        <Image style={[styles.tabbarIcon, tintSelectedState]} source={{uri: this.props.icon}} />
-        <Text style={[styles.tabbarText, selectedState]}>{this.props.name}</Text>
+          <Image style={[styles.tabbarIcon, tintSelectedState]} source={{uri: this.props.icon}} />
+          <Text style={[styles.tabbarText, selectedState]}>{this.props.name}</Text>
         </View>
       </TouchableHighlight>
+    );
+  }
+}
+
+TabBarItem = connectToStores(TabBarItem);
+
+export class TabBarView extends Component {
+  static propTypes = {
+    defaultTab: PropTypes.number
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedTab: props.defaultTab || 0
+    };
+  }
+
+  render() {
+    let {children, ...otherProps} = this.props;
+    var id = 0;
+    return (
+      <View style={styles.tabbar} {...otherProps}>
+      {React.Children.map(children, (el)=>{
+          return <TabBarItem {...el.props} key={el.props.name} id={id++} />
+        })
+      }</View>
     );
   }
 }
@@ -44,12 +80,12 @@ class TabBarItem extends Component {
 export class TabBar extends Component {
   render() {
     return (
-      <View style={styles.tabbar}>
+      <TabBarView>
         <TabBarItem icon={'nearby'} name={'Nearby'} />
         <TabBarItem icon={'search'} name={'Search'} />
         <TabBarItem icon={'my_schools'} name={'My Schools'} />
         <TabBarItem icon={'great_kids'} name={'GreatKids!'} />
-      </View>
+      </TabBarView>
     );
   }
 }
