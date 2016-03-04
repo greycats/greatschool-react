@@ -1,6 +1,12 @@
 'use strict';
 
-import React, {View, Component, PropTypes} from 'react-native';
+import React, {
+  TouchableHighlight,
+  View,
+  Component,
+  PropTypes,
+  Text,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 export class Background extends Component {
@@ -33,9 +39,56 @@ export class Divider extends Component {
   }
 }
 
+export class Button extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    onClick: PropTypes.func
+  };
+
+  _onPressButton() {
+    this.props.onClick();
+  }
+
+  render() {
+    return (
+      <TouchableHighlight onPress={this._onPressButton}>
+      <View style={styles.buttonWrapper}>
+        <LinearGradient style={styles.button}
+          colors={['#AEE248', '#76C223']}>
+          <Text style={styles.buttonText}>{this.props.title}</Text>
+        </LinearGradient>
+        </View>
+      </TouchableHighlight>
+    );
+  }
+}
 const styles = React.StyleSheet.create({
   divider: {
     height: 1,
     marginBottom: 2
   },
+  buttonWrapper: {
+    alignSelf: 'center',
+    paddingBottom: 15
+  },
+  button: {
+    flexDirection: 'column',
+    width: 175,
+    borderRadius: 5,
+    height: 44,
+    backgroundColor: 'black',
+    shadowColor: '#101112',
+    shadowOffset: {width: 0, height: 7},
+    shadowRadius: 11,
+    justifyContent: 'center',
+    shadowOpacity: 0.15,
+  },
+  buttonText: {
+    backgroundColor: "transparent",
+    fontFamily: 'ProximaNova-Bold',
+    fontSize: 15,
+    alignSelf: 'center',
+    color: 'white',
+    letterSpacing: 1.07,
+  }
 });

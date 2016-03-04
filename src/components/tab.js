@@ -31,7 +31,6 @@ class TabBarItem extends Component {
   };
 
   onSelect() {
-    console.log('onSelect', 'TabActions.switchTab', this.props.id);
     TabActions.switchTab(this.props.id);
   }
 
@@ -52,40 +51,15 @@ class TabBarItem extends Component {
 
 TabBarItem = connectToStores(TabBarItem);
 
-export class TabBarView extends Component {
-  static propTypes = {
-    defaultTab: PropTypes.number
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedTab: props.defaultTab || 0
-    };
-  }
-
-  render() {
-    let {children, ...otherProps} = this.props;
-    var id = 0;
-    return (
-      <View style={styles.tabbar} {...otherProps}>
-      {React.Children.map(children, (el)=>{
-          return <TabBarItem {...el.props} key={el.props.name} id={id++} />
-        })
-      }</View>
-    );
-  }
-}
-
 export class TabBar extends Component {
   render() {
     return (
-      <TabBarView>
-        <TabBarItem icon={'nearby'} name={'Nearby'} />
-        <TabBarItem icon={'search'} name={'Search'} />
-        <TabBarItem icon={'my_schools'} name={'My Schools'} />
-        <TabBarItem icon={'great_kids'} name={'GreatKids!'} />
-      </TabBarView>
+      <View style={styles.tabbar}>
+      <TabBarItem icon={'nearby'} name={'Nearby'} key={0} id={0} />
+      <TabBarItem icon={'search'} name={'Search'} key={1} id={1} />
+      <TabBarItem icon={'my_schools'} name={'My Schools'} key={2} id={2} />
+      <TabBarItem icon={'great_kids'} name={'GreatKids!'} key={3} id={3} />
+      </View>
     );
   }
 }

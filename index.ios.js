@@ -11,8 +11,8 @@ import React, {
   StatusBarIOS
 } from 'react-native';
 import {Background} from './src/components/components';
-import {TabBar} from './src/components/tabbar';
-import {HomeScene} from './home';
+import {TabBar} from './src/components/tab';
+import HomeScene from './src/components/HomeScene';
 
 // onForward={() => {
 //   var nextIndex = route.index + 1;
@@ -38,7 +38,7 @@ class GreatSchool extends Component {
         <Navigator
           initialRoute={{name: 'Home step 1', index: 0}}
           renderScene={(route, navigator) =>
-            <HomeScene style={styles.container} />
+            <HomeScene />
           }
         />
       <TabBar />
@@ -47,13 +47,5 @@ class GreatSchool extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  }
-});
 
 AppRegistry.registerComponent('GreatSchool', () => GreatSchool);
