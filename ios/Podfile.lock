@@ -1,0 +1,40 @@
+PODS:
+  - Greycats (2.4.5):
+    - Greycats/Breadcrumb (= 2.4.5)
+    - Greycats/Filter (= 2.4.5)
+    - Greycats/Professional (= 2.4.5)
+    - Greycats/ReactControls (= 2.4.5)
+  - Greycats/Breadcrumb (2.4.5)
+  - Greycats/Core (2.4.5)
+  - Greycats/Filter (2.4.5):
+    - Greycats/TableView
+  - Greycats/FormField (2.4.5):
+    - Greycats/Core
+  - Greycats/Graphics (2.4.5)
+  - Greycats/JSON (2.4.5)
+  - Greycats/Keyboard (2.4.5)
+  - Greycats/Layout (2.4.5)
+  - Greycats/Professional (2.4.5):
+    - Greycats/FormField
+    - Greycats/Graphics
+    - Greycats/Layout
+    - Greycats/Standard
+  - Greycats/ReactControls (2.4.5)
+  - Greycats/Standard (2.4.5):
+    - Greycats/Core
+    - Greycats/JSON
+    - Greycats/Keyboard
+    - Greycats/TableView
+  - Greycats/TableView (2.4.5)
+
+DEPENDENCIES:
+  - Greycats (from `../../Greycats.swift`)
+
+EXTERNAL SOURCES:
+  Greycats:
+    :path: ../../Greycats.swift
+
+SPEC CHECKSUMS:
+  Greycats: 20d7c8c0969611d01858e8151b4378faa3b5078b
+
+COCOAPODS: 0.39.0
