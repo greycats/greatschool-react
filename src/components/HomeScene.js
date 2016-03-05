@@ -37,9 +37,9 @@ export class PickSchoolScene extends Component {
         <View style={styles.schools}>
         <School icon={'elementary_schools'} />
         <Divider vertical={true} style={styles.dividerV} />
-        <School icon={'middle_schools'} />
+        <School icon={'middle_schools'} count={17} />
         <Divider vertical={true} style={styles.dividerV} />
-        <School icon={'high_schools'} />
+        <School icon={'high_schools'} count={99} />
         </View>
         <Divider />
       </View>

@@ -48,14 +48,21 @@ export class School extends Component {
 
   static propTypes = {
     icon: PropTypes.string.isRequired,
+    count: PropTypes.number,
     ...View.propTypes
   };
 
   render() {
-    let {icon, ...otherProps} = this.props;
+    let {icon, count, ...otherProps} = this.props;
+    let opacity = count ? 1 : 0;
     return (
       <View style={styles.school} {...otherProps}>
-        <Image style={styles.schoolAvatar} source={{uri: icon}} />
+        <View>
+          <Image style={styles.schoolAvatar} source={{uri: icon}} />
+          <View style={[styles.schoolSmallCountBackground, {opacity}]}>
+            <Text style={styles.schoolSmallCount}>{count}</Text>
+          </View>
+        </View>
         <Text style={[styles.text, styles.schoolCaption]} numberOfLines={0}>{this.schoolName(icon)}</Text>
       </View>
     );
@@ -76,6 +83,25 @@ const styles = StyleSheet.create({
     borderRadius: 35.5,
     width: 71,
     height: 71,
+  },
+  schoolSmallCountBackground: {
+    width: 23,
+    height: 23,
+    borderRadius: 11.5,
+    backgroundColor: '#0B4782',
+    position: 'absolute',
+    top: 0,
+    right: -5,
+    opacity: 1,
+    justifyContent: 'center',
+  },
+  schoolSmallCount: {
+    alignSelf: 'center',
+    fontSize: 12.57,
+    fontFamily: 'ProximaNova-Semibold',
+    color: '#6DFFEC',
+    backgroundColor: 'transparent',
+    lineHeight: 14,
   },
   schoolCaption: {
     fontSize: 12,
