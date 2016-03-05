@@ -17,11 +17,11 @@ export default class HomeScene extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <NearbySchools style={styles.schoolsCount} onExplore={e=> {
+        <NearbySchools onExplore={e=> {
           this.props.navigator.push({name: 'home-step2', title: 'Pick a School'});
         }} />
         <View>
-        <Divider style={styles.divider90}/>
+        <Divider />
           <Ads onClick={e=>{
             //TODO
           }} />
@@ -37,9 +37,9 @@ export class PickSchoolScene extends Component {
       <ScrollView style={styles.container}>
         <View style={styles.schools}>
         <School icon={'elementary_schools'} />
-        <Divider vertical={true} style={styles.dividerV} />
+        <Divider vertical={true} />
         <School icon={'middle_schools'} count={17} />
-        <Divider vertical={true} style={styles.dividerV} />
+        <Divider vertical={true} />
         <School icon={'high_schools'} count={99} />
         </View>
         <Divider />
