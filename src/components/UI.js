@@ -32,19 +32,32 @@ export class Background extends Component {
 }
 
 export class Divider extends Component {
-  render() {
-    var start = [0, 0.5];
-    var end = [1, 0.5];
-    var locations = [0, 0.25, 0.75, 1];
+  static propTypes = {
+    vertical: PropTypes.bool
+  };
 
+  render() {
+    let vertical = this.props.vertical || false;
+    let start, end, style, groupStyle;
+    if (vertical) {
+      start = [0.5, 0];
+      end = [0.5, 1];
+      style = {width: 1.5};
+      groupStyle = {flexDirection: 'row', transform: [{rotate: '180deg'}]};
+    } else {
+      start = [0, 0.5];
+      end = [1, 0.5];
+      style = {height: 1.5};
+    }
+    let locations = [0, 0.25, 0.75, 1];
     return (
-      <View>
-      <LinearGradient style={styles.divider}
-        colors={['#ffffff0f', '#ffffff68', '#ffffff68', '#ffffff0f']}
-        locations={locations} start={start} end={end} />
-      <LinearGradient style={styles.divider}
-        colors={['#00000002', '#00000019', '#00000019', '#00000002']}
-        locations={locations} start={start} end={end} />
+      <View style={groupStyle}>
+        <LinearGradient style={style}
+          colors={['#ffffff0f', '#ffffff68', '#ffffff68', '#ffffff0f']}
+          locations={locations} start={start} end={end} />
+        <LinearGradient style={style}
+          colors={['#00000002', '#00000019', '#00000019', '#00000002']}
+          locations={locations} start={start} end={end} />
       </View>
     );
   }
@@ -77,10 +90,6 @@ export class Button extends Component {
 const styles = React.StyleSheet.create({
   container: {
     alignSelf: 'center',
-  },
-  divider: {
-    height: 1,
-    marginBottom: 2
   },
   button: {
     borderRadius: 5,

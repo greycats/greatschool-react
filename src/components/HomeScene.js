@@ -6,11 +6,11 @@ import React, {
   StyleSheet,
   Text,
 } from 'react-native';
-import {Divider} from './UI';
+import {Divider, DividerV} from './UI';
 import Ads from './ads';
 import {GradientText} from './gradient';
 import {NavigationBar} from './nav';
-import NearbySchools from './NearbySchools';
+import NearbySchools, {School} from './NearbySchools';
 
 export default class HomeScene extends Component {
   render() {
@@ -35,42 +35,27 @@ export class PickSchoolScene extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.schools}>
-        <View style={styles.school}><Text style={styles.schoolTitle}>A</Text></View>
-        <View style={styles.divider90}><Divider /></View>
-        <View style={styles.school}><Text style={styles.schoolTitle}>A</Text></View>
-        <Divider style={styles.divider90} />
-        <View style={styles.school}><Text style={styles.schoolTitle}>A</Text></View>
+        <School icon={'elementary_schools'} />
+        <Divider vertical={true} style={styles.dividerV} />
+        <School icon={'middle_schools'} />
+        <Divider vertical={true} style={styles.dividerV} />
+        <School icon={'high_schools'} />
         </View>
+        <Divider />
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  divider90: {
-    transform: [{rotate: '90deg'}]
-  },
   container: {
     marginTop: 64,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
     flex: 1,
   },
   schools: {
-    top: 47,
-    alignSelf: 'center',
+    marginTop: 47,
+    height: 189,
+    marginBottom: 29,
     flexDirection: 'row',
-    alignItems: 'center',
-    height: 189,
-    justifyContent: 'space-around',
   },
-  school: {
-    flexDirection: 'column',
-    flex: 1,
-    width: 100,
-    height: 189,
-  },
-  schoolTitle: {
-    textAlign: 'center',
-  }
 });

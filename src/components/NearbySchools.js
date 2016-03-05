@@ -4,7 +4,9 @@ import React, {
   Component,
   View,
   StyleSheet,
+  PropTypes,
   Text,
+  Image,
 } from 'react-native';
 import {GradientText} from './gradient';
 import {Button} from './UI';
@@ -12,7 +14,7 @@ import Actions from '../actions/Actions'
 
 export default class NearbySchools extends Component {
   static propTypes = {
-    onExplore: React.PropTypes.func.isRequired
+    onExplore: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -39,7 +41,49 @@ export default class NearbySchools extends Component {
   }
 }
 
+export class School extends Component {
+  schoolName(text) {
+    return text.replace(/_/, ' ').toUpperCase();
+  }
+
+  static propTypes = {
+    icon: PropTypes.string.isRequired,
+    ...View.propTypes
+  };
+
+  render() {
+    let {icon, ...otherProps} = this.props;
+    return (
+      <View style={styles.school} {...otherProps}>
+        <Image style={styles.schoolAvatar} source={{uri: icon}} />
+        <Text style={[styles.text, styles.schoolCaption]} numberOfLines={0}>{this.schoolName(icon)}</Text>
+      </View>
+    );
+  }
+}
+
 const styles = StyleSheet.create({
+  school: {
+    flex: 1,
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    paddingTop: 20,
+    width: 70,
+    marginHorizontal: 5,
+  },
+  schoolAvatar: {
+    backgroundColor: '#155293',
+    borderRadius: 35.5,
+    width: 71,
+    height: 71,
+  },
+  schoolCaption: {
+    fontSize: 12,
+    marginTop: 19,
+    shadowOpacity: 0.13,
+    letterSpacing: 0.86,
+    lineHeight: 19,
+  },
   wrapper: {
     flex: 1,
     justifyContent: 'center',
@@ -63,10 +107,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'ProximaNova-Bold',
     fontSize: 13,
+    textAlign: 'center',
     shadowColor: '#004188',
     shadowOpacity: 0.22,
     shadowOffset: {width: 0, height: 5},
-    shadowRadius: 6
+    shadowRadius: 6,
+    letterSpacing: 0.93,
   },
   underline: {
     color: '#B8E986',
