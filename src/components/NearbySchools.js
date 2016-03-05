@@ -43,28 +43,25 @@ export default class NearbySchools extends Component {
 }
 
 export class School extends Component {
-  schoolName(text) {
-    return text.replace(/_/, ' ').toUpperCase();
-  }
-
   static propTypes = {
-    icon: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    icon: PropTypes.number.isRequired,
     count: PropTypes.number,
     ...View.propTypes
   };
 
   render() {
-    let {icon, count, ...otherProps} = this.props;
+    let {name, icon, count, ...otherProps} = this.props;
     let opacity = count ? 1 : 0;
     return (
       <TouchableOpacity style={styles.school} {...otherProps}>
         <View>
-          <Image style={styles.schoolAvatar} source={{uri: icon}} />
+          <Image style={styles.schoolAvatar} source={icon} />
           <View style={[styles.schoolSmallCountBackground, {opacity}]}>
             <Text style={styles.schoolSmallCount}>{count}</Text>
           </View>
         </View>
-        <Text style={[styles.text, styles.schoolCaption]} numberOfLines={0}>{this.schoolName(icon)}</Text>
+        <Text style={[styles.text, styles.schoolCaption]} numberOfLines={0}>{name.toUpperCase()}</Text>
       </TouchableOpacity>
     );
   }

@@ -36,11 +36,11 @@ export class PickSchoolScene extends Component {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.schools}>
-        <School icon={'elementary_schools'} />
+        <School name={'elementary schools'} icon={require('./images/elementary_schools.png')} />
         <Divider vertical={true} />
-        <School icon={'middle_schools'} count={17} />
+        <School name={'middle schools'} icon={require('./images/middle_schools.png')} count={17} />
         <Divider vertical={true} />
-        <School icon={'high_schools'} count={99} />
+        <School name={'high schools'} icon={require('./images/high_schools.png')} count={99} />
         </View>
         <Divider />
       </ScrollView>

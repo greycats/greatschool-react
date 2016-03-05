@@ -23,7 +23,7 @@ class TabBarItem extends Component {
   }
 
   static propTypes = {
-    icon: PropTypes.string,
+    icon: PropTypes.number,
     name: PropTypes.string,
     highlighted: PropTypes.bool,
     id: PropTypes.number
@@ -40,7 +40,7 @@ class TabBarItem extends Component {
     return (
       <TouchableHighlight style={styles.tabbarItem} underlayColor={'transparent'} onPress={this.onSelect.bind(this)}>
         <View>
-          <Image style={[styles.tabbarIcon, tintSelectedState]} source={{uri: this.props.icon}} />
+          <Image style={[styles.tabbarIcon, tintSelectedState]} source={this.props.icon} />
           <Text style={[styles.tabbarText, selectedState]}>{this.props.name}</Text>
         </View>
       </TouchableHighlight>
@@ -54,10 +54,10 @@ export class TabBar extends Component {
   render() {
     return (
       <View style={styles.tabbar}>
-      <TabBarItem icon={'nearby'} name={'Nearby'} key={0} id={0} />
-      <TabBarItem icon={'search'} name={'Search'} key={1} id={1} />
-      <TabBarItem icon={'my_schools'} name={'My Schools'} key={2} id={2} />
-      <TabBarItem icon={'great_kids'} name={'GreatKids!'} key={3} id={3} />
+      <TabBarItem icon={require('./images/nearby.png')} name={'Nearby'} key={0} id={0} />
+      <TabBarItem icon={require('./images/search.png')} name={'Search'} key={1} id={1} />
+      <TabBarItem icon={require('./images/my_schools.png')} name={'My Schools'} key={2} id={2} />
+      <TabBarItem icon={require('./images/great_kids.png')} name={'GreatKids!'} key={3} id={3} />
       </View>
     );
   }

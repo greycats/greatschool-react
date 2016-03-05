@@ -28,7 +28,7 @@ export default class Ads extends Component {
         </View>
         <View style={styles.right}>
           <TouchableHighlight underlayColor={'transparent'} onPress={this._onPressButton.bind(this)}>
-            <Image style={styles.go} source={{uri: 'go'}} />
+            <Image style={styles.go} source={require('./images/go.png')} />
           </TouchableHighlight>
         </View>
       </View>
