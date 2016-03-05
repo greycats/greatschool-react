@@ -6,6 +6,7 @@ import React, {
   StyleSheet,
   PropTypes,
   Text,
+  TouchableOpacity,
   Image,
 } from 'react-native';
 import {GradientText} from './gradient';
@@ -56,7 +57,7 @@ export class School extends Component {
     let {icon, count, ...otherProps} = this.props;
     let opacity = count ? 1 : 0;
     return (
-      <View style={styles.school} {...otherProps}>
+      <TouchableOpacity style={styles.school} {...otherProps}>
         <View>
           <Image style={styles.schoolAvatar} source={{uri: icon}} />
           <View style={[styles.schoolSmallCountBackground, {opacity}]}>
@@ -64,7 +65,7 @@ export class School extends Component {
           </View>
         </View>
         <Text style={[styles.text, styles.schoolCaption]} numberOfLines={0}>{this.schoolName(icon)}</Text>
-      </View>
+      </TouchableOpacity>
     );
   }
 }

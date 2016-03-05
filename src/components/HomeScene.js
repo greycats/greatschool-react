@@ -5,6 +5,7 @@ import React, {
   View,
   StyleSheet,
   Text,
+  ScrollView,
 } from 'react-native';
 import {Divider, DividerV} from './UI';
 import Ads from './ads';
@@ -33,7 +34,7 @@ export default class HomeScene extends Component {
 export class PickSchoolScene extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={styles.schools}>
         <School icon={'elementary_schools'} />
         <Divider vertical={true} style={styles.dividerV} />
@@ -42,7 +43,7 @@ export class PickSchoolScene extends Component {
         <School icon={'high_schools'} count={99} />
         </View>
         <Divider />
-      </View>
+      </ScrollView>
     );
   }
 }

@@ -1,8 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
 'use strict';
+
 import React, {
   AppRegistry,
   Component,
@@ -21,7 +18,6 @@ class GreatSchool extends Component {
   }
 
   renderScene(route, navigator) {
-    console.log(route.name);
     switch (route.name) {
     case "home-step1":
       return <HomeScene navigator={navigator} />
@@ -45,10 +41,5 @@ class GreatSchool extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  navigationBar: {
-  },
-});
 
 AppRegistry.registerComponent('GreatSchool', () => GreatSchool);
