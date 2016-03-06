@@ -50,7 +50,7 @@ class TabBarItem extends Component {
 
 TabBarItem = connectToStores(TabBarItem);
 
-export class TabBar extends Component {
+export default class TabBar extends Component {
   render() {
     return (
       <View style={styles.tabbar}>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   tabbar: {
     flexDirection: 'row',
     height: 66,
-    shadowColor: 0x000000,
+    shadowColor: 'black',
     shadowOpacity: 0.14,
     shadowRadius: 16,
     shadowOffset: {width: 0, height: 2},

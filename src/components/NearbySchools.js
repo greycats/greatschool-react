@@ -13,7 +13,7 @@ import {GradientText} from './gradient';
 import {Button} from './UI';
 import Actions from '../actions/Actions'
 
-export default class NearbySchools extends Component {
+export default class SchoolsIndicator extends Component {
   static propTypes = {
     onExplore: PropTypes.func.isRequired
   };
@@ -42,9 +42,10 @@ export default class NearbySchools extends Component {
   }
 }
 
-export class School extends Component {
+export class SchoolIcon extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
+    horizontal: PropTypes.bool,
     icon: PropTypes.number.isRequired,
     count: PropTypes.number,
     ...View.propTypes
@@ -54,13 +55,12 @@ export class School extends Component {
     let {name, icon, count, ...otherProps} = this.props;
     let opacity = count ? 1 : 0;
     return (
-      <TouchableOpacity style={styles.school} {...otherProps}>
-        <View>
-          <Image style={styles.schoolAvatar} source={icon} />
+      <TouchableOpacity style={[this.props.horizontal ? styles.schoolH : styles.schoolV]} {...otherProps}>
+        <Image style={styles.schoolAvatar} source={icon}>
           <View style={[styles.schoolSmallCountBackground, {opacity}]}>
             <Text style={styles.schoolSmallCount}>{count}</Text>
           </View>
-        </View>
+        </Image>
         <Text style={[styles.text, styles.schoolCaption]} numberOfLines={0}>{name.toUpperCase()}</Text>
       </TouchableOpacity>
     );
@@ -68,19 +68,24 @@ export class School extends Component {
 }
 
 const styles = StyleSheet.create({
-  school: {
+  schoolH: {
+    flexDirection: 'row',
+  },
+  schoolV: {
     flex: 1,
+    paddingTop: 20,
     alignItems: 'center',
     alignSelf: 'flex-start',
-    paddingTop: 20,
     width: 70,
     marginHorizontal: 5,
+    // flexDirection: 'column',
   },
   schoolAvatar: {
     backgroundColor: '#155293',
     borderRadius: 35.5,
     width: 71,
     height: 71,
+    overflow: 'visible',
   },
   schoolSmallCountBackground: {
     width: 23,
@@ -115,8 +120,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'column',
+    justifyContent: 'center'
   },
   schoolCount: {
     height: 141,

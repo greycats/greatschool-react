@@ -1,45 +1,26 @@
 'use strict';
 
-import React, {
-  AppRegistry,
-  Component,
-  Navigator,
-  StyleSheet,
-  StatusBarIOS
-} from 'react-native';
+import React from 'react-native';
 import {Background} from './src/components/UI';
-import {TabBar} from './src/components/tab';
-import NavigationBar from './src/components/nav';
+import TabBar from './src/components/tab';
+import Navigator from './src/components/nav';
 import HomeScene, {PickSchoolScene} from './src/components/HomeScene';
+import SearchScene from './src/components/SearchScene';
 
-class GreatSchool extends Component {
-  componentWillMount() {
-    StatusBarIOS.setStyle('light-content');
-  }
-
-  renderScene(route, navigator) {
-    switch (route.name) {
-    case "home-step1":
-      return <HomeScene navigator={navigator} />
-      break;
-    case "home-step2":
-      return <PickSchoolScene navigator={navigator} />
-      break;
-    }
-  }
-
+class GreatSchool extends React.Component {
   render() {
+    let route = {
+      'home-step1': <HomeScene />,
+      'home-step2': <PickSchoolScene />,
+      'search': <SearchScene />,
+    };
     return (
-      <Background type={'home-step1'}>
-        <Navigator
-          initialRoute={{name: 'home-step1', index: 0}}
-          renderScene={this.renderScene.bind(this)}
-          navigationBar={NavigationBar}
-        />
-      <TabBar />
-      </Background>
+      <React.View style={{flex: 1, backgroundColor: '#F0F5F6'}}>
+        <Navigator map={route} />
+        <TabBar />
+      </React.View>
     );
   }
 }
 
-AppRegistry.registerComponent('GreatSchool', () => GreatSchool);
+React.AppRegistry.registerComponent('GreatSchool', () => GreatSchool);

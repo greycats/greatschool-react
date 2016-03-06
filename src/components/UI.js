@@ -6,6 +6,7 @@ import React, {
   Component,
   PropTypes,
   Text,
+  ListView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -75,7 +76,7 @@ export class Button extends Component {
 
   render() {
     return (
-      <TouchableHighlight style={styles.container} onPress={this.props.onClick} underlayColor={'transparent'}>
+      <TouchableHighlight style={{alignSelf: 'center'}} onPress={this.props.onClick} underlayColor={'transparent'}>
         <View>
           <LinearGradient style={styles.button}
             colors={['#AEE248', '#76C223']}>
@@ -87,9 +88,40 @@ export class Button extends Component {
   }
 }
 
+export class SchoolList extends Component {
+  static propTypes = {
+    ...React.View.propTypes
+  };
+
+
+  render() {
+    return (
+      <View style={styles.list}>
+      </View>
+    );
+  }
+}
+
+export class SchoolListItem extends Component {
+  static propTypes = {
+    school: PropTypes.object.isRequired
+  };
+
+  render() {
+    return (
+      <View style={styles.listItem} />
+    );
+  }
+}
+
 const styles = React.StyleSheet.create({
-  container: {
-    alignSelf: 'center',
+  list: {
+    backgroundColor: '#F0F5F6',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  listItem: {
+
   },
   button: {
     borderRadius: 5,

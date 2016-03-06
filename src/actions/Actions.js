@@ -4,7 +4,7 @@ export class Actions {
   switchTab(tab) {
     return tab;
   }
-  exploreNearbySchools() {
+  exploreSchoolsIndicator() {
   }
 }
 

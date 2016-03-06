@@ -1,7 +1,7 @@
 'use strict';
 
 import React, {
-  TouchableHighlight,
+  TouchableOpacity,
   View,
   Component,
   PropTypes,
@@ -14,10 +14,6 @@ export default class Ads extends Component {
     onClick: PropTypes.func
   };
 
-  _onPressButton() {
-    this.props.onClick();
-  }
-
   render() {
     return (
       <View style={styles.ads}>
@@ -27,9 +23,9 @@ export default class Ads extends Component {
           <Text style={styles.footer}>Content by: GreatKids</Text>
         </View>
         <View style={styles.right}>
-          <TouchableHighlight underlayColor={'transparent'} onPress={this._onPressButton.bind(this)}>
+          <TouchableOpacity underlayColor={'transparent'} onPress={this.props.onClick}>
             <Image style={styles.go} source={require('./images/go.png')} />
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
       </View>
     );
