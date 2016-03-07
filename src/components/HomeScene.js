@@ -9,7 +9,11 @@ import React, {
 } from 'react-native';
 import {Divider, SchoolList} from './UI';
 
-import Ads, {AdsCells, RecommendContent} from './ads';
+import Ads, {
+  AdsCells,
+  RecommendContent,
+  RecommendContents,
+} from './ads';
 import {GradientText} from './gradient';
 import SchoolsIndicator, {
   SchoolIcon,
@@ -75,6 +79,7 @@ export class PickSchoolScene extends Component {
       <Text style={styles.headerText}>RECOMMENDED CONTENT</Text>
       <View style={styles.cells}>
       <RecommendContent />
+      <RecommendContents totalPage={5}/>
       <AdsCells />
       </View>
       </View>

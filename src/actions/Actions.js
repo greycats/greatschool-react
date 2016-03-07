@@ -4,6 +4,9 @@ export class Actions {
   switchTab(tab) {
     return tab;
   }
+  switchPageControl(page) {
+    return page;
+  }
   exploreSchoolsIndicator() {
   }
 }

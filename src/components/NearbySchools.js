@@ -11,7 +11,6 @@ import React, {
 } from 'react-native';
 import {GradientText} from './gradient';
 import {Button, GeneralCell, sharedStyles} from './UI';
-import Actions from '../actions/Actions';
 
 export default class SchoolsIndicator extends Component {
   static propTypes = {

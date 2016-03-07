@@ -6,7 +6,7 @@ import Actions from '../actions/Actions'
 class TabStore {
   constructor() {
     this.bindListeners({
-      switchTab: Actions.switchTab
+      switchTab: Actions.switchTab,
     });
     this.state = {
       selectedTab: 0

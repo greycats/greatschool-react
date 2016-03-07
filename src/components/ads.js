@@ -2,6 +2,7 @@
 
 import React, {
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
   Component,
   PropTypes,
@@ -10,6 +11,8 @@ import React, {
 } from 'react-native';
 import {Button, GeneralCell, sharedStyles} from './UI';
 import LinearGradient from 'react-native-linear-gradient';
+import PageControlStore from '../stores/PageControlStore';
+import Actions from '../actions/Actions';
 
 export default class Ads extends Component {
   static propTypes = {
@@ -87,6 +90,58 @@ export class RecommendContent extends Component {
   }
 }
 
+export class RecommendContents extends Component {
+  static propTypes = {
+    totalPage: PropTypes.number.isRequired,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = PageControlStore.getState();
+  }
+
+  componentDidMount() {
+    PageControlStore.listen(this.onPageChange.bind(this));
+  }
+
+  componentWillUnmount() {
+    PageControlStore.unlisten(this.onPageChange.bind(this));
+  }
+
+  onPageChange(page) {
+    this.setState(page);
+  }
+
+  renderPageControl() {
+    let length = this.props.totalPage;
+    let page = this.state.currentPage;
+    return (
+      <View style={styles.pageControl}>
+      {
+        Array.from({length}, (v, i) => {
+          return <TouchableOpacity activeOpacity={1} onPress={() => Actions.switchPageControl(i)} key={i} style={[styles.pageControlDot, {backgroundColor: (i == page) ? '#8593A2' : '#C1D2D98E'}]} />
+        })
+      }
+      </View>
+    );
+  }
+
+  render() {
+    let {children, ...otherProps} = this.props;
+    return (
+      <View>
+      <GeneralCell {...otherProps}>
+      <Image style={styles.recommendedImage2} source={require('./images/shutterstock2.jpg')} />
+      <Text style={[sharedStyles.buttonText, styles.recommendedSubtitle]}>EASY LEARNING</Text>
+      <Text style={[sharedStyles.buttonText, styles.recommendedText]}>Free online collection of videos aimed at helping you understand your kid’s grade-level expectations</Text>
+      <Button style={styles.exploreButton} colors={['#F99913', '#F26620']} start={[0.72, 0]} end={[0.62, 1]} title={"Let’s explore"} />
+      </GeneralCell>
+      {this.renderPageControl()}
+      </View>
+    );
+  }
+}
+
 const styles = React.StyleSheet.create({
   ads: {
     flexDirection: 'row',
@@ -119,6 +174,13 @@ const styles = React.StyleSheet.create({
     fontSize: 45,
     paddingTop: 13,
   },
+  recommendedSubtitle: {
+    paddingTop: 25,
+    fontFamily: 'ProximaNova-Semibold',
+    fontSize: 12,
+    color: '#585859',
+    letterSpacing: 0.67,
+  },
   recommendedText: {
     fontFamily: 'ProximaNova-Regular',
     fontSize: 14,
@@ -135,6 +197,25 @@ const styles = React.StyleSheet.create({
     right: 0,
     bottom: 0,
     alignSelf: 'center',
+  },
+  recommendedImage2: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    alignSelf: 'center',
+  },
+  pageControl: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingTop: 12,
+    paddingBottom: 32,
+  },
+  pageControlDot: {
+    borderRadius: 5,
+    width: 10,
+    height: 10,
+    marginHorizontal: 3,
   },
   exploreButton: {
     marginBottom: 116,
