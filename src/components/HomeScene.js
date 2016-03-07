@@ -9,12 +9,12 @@ import React, {
 } from 'react-native';
 import {Divider, SchoolList} from './UI';
 
-import Ads from './ads';
+import Ads, {AdsCells, RecommendContent} from './ads';
 import {GradientText} from './gradient';
 import SchoolsIndicator, {
   SchoolIcon,
   SchoolCell,
-  SchoolCellMore
+  SchoolCellMore,
 } from './NearbySchools';
 
 export default class HomeScene extends Component {
@@ -37,33 +37,59 @@ export default class HomeScene extends Component {
 }
 
 export class PickSchoolScene extends Component {
+  renderSummary() {
+    return (
+      <View>
+        <View style={styles.schoolIcons}>
+          <SchoolIcon name={'elementary schools'} icon={require('./images/elementary_schools.png')} onPress={(e) => {console.log(e);}}/>
+          <Divider vertical={true} />
+          <SchoolIcon name={'middle schools'} icon={require('./images/middle_schools.png')} count={17} />
+          <Divider vertical={true} />
+          <SchoolIcon name={'high schools'} icon={require('./images/high_schools.png')} count={99} />
+        </View>
+        <Divider />
+        <View style={styles.allNearBy}>
+          <SchoolIcon name={'all nearby schools'} icon={require('./images/nearby_schools.png')} horizontal={true} scale={0.6} />
+        </View>
+      </View>
+    );
+  }
+
+  renderSchoolList() {
+    return (
+      <View>
+      <Text style={styles.headerText}>NEARBY SCHOOLS</Text>
+      <View style={styles.cells}>
+      <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={9} ratings={4} reviews={214} />
+      <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={5} ratings={3} reviews={114} />
+      <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={9} ratings={4} reviews={314} />
+      <SchoolCellMore count={7} />
+      </View>
+      </View>
+    );
+  }
+
+  renderRecommendedContent() {
+    return (
+      <View>
+      <Text style={styles.headerText}>RECOMMENDED CONTENT</Text>
+      <View style={styles.cells}>
+      <RecommendContent />
+      <AdsCells />
+      </View>
+      </View>
+    );
+  }
   render() {
     return (
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        <View>
-          <View style={styles.schoolIcons}>
-            <SchoolIcon name={'elementary schools'} icon={require('./images/elementary_schools.png')} onPress={(e) => {console.log(e);}}/>
-            <Divider vertical={true} />
-            <SchoolIcon name={'middle schools'} icon={require('./images/middle_schools.png')} count={17} />
-            <Divider vertical={true} />
-            <SchoolIcon name={'high schools'} icon={require('./images/high_schools.png')} count={99} />
-          </View>
-          <Divider />
-          <View style={styles.allNearBy}>
-            <SchoolIcon name={'all nearby schools'} icon={require('./images/nearby_schools.png')} horizontal={true} scale={0.6} />
-          </View>
-        </View>
+        {this.renderSummary()}
         <View style={{backgroundColor:'#F0F5F6', overflow: 'hidden', flexDirection: 'column'}}>
-        <View style={styles.shadowWrapper}>
-          <View style={styles.shadow} />
-        </View>
-        <Text style={styles.headerText}>NEARBY SCHOOLS</Text>
-        <View style={styles.cells}>
-        <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={9} ratings={4} reviews={214} />
-        <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={5} ratings={3} reviews={114} />
-        <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={9} ratings={4} reviews={314} />
-        <SchoolCellMore count={7} />
-        </View>
+          <View style={styles.shadowWrapper}>
+            <View style={styles.shadow} />
+          </View>
+          {this.renderSchoolList()}
+          {this.renderRecommendedContent()}
         </View>
       </ScrollView>
     );

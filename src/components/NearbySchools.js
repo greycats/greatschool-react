@@ -10,8 +10,8 @@ import React, {
   Image,
 } from 'react-native';
 import {GradientText} from './gradient';
-import {Button} from './UI';
-import Actions from '../actions/Actions'
+import {Button, GeneralCell, sharedStyles} from './UI';
+import Actions from '../actions/Actions';
 
 export default class SchoolsIndicator extends Component {
   static propTypes = {
@@ -74,25 +74,15 @@ export class SchoolIcon extends Component {
   }
 }
 
-export class GeneralCell extends Component {
-  static propTypes = View.propTypes;
-
-  render() {
-    return (
-      <View style={styles.cellBackground} {...this.props} />
-    )
-  }
-}
-
 export class SchoolCellMore extends Component {
   render() {
     let {count, ...otherProps} = this.props;
     return (
       <GeneralCell {...otherProps}>
-      <View style={[styles.cellContent, styles.schoolCellMoreContent]}>
+      <TouchableOpacity style={[sharedStyles.cellContent, styles.schoolCellMoreContent]}>
         <Text style={styles.moreText}>{count} More Schools</Text>
         <Image source={require('./images/disclosure_button.png')} />
-      </View>
+      </TouchableOpacity>
       </GeneralCell>
     );
   }
@@ -140,7 +130,7 @@ export class SchoolCell extends Component {
     let {name, address, distance, count, ratings, reviews, ...otherProps} = this.props;
     return (
       <GeneralCell {...otherProps}>
-        <View style={[styles.cellContent, styles.schoolCellContent]}>
+        <TouchableOpacity style={[sharedStyles.cellContent, styles.schoolCellContent]}>
         <View style={{flexDirection: 'column'}}>
         <Text style={styles.cellTitle}>{name}</Text>
         <Text style={styles.cellAddress}>{address}</Text>
@@ -151,31 +141,13 @@ export class SchoolCell extends Component {
         {this.renderRatings(ratings)}
         <Text style={styles.reviewsCount}>{reviews} reviews</Text>
         </View>
-        </View>
+        </TouchableOpacity>
       </GeneralCell>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  cellBackground: {
-    marginLeft: 17,
-    marginRight: 17,
-    marginBottom: 14,
-    borderRadius: 4,
-    backgroundColor: 'white',
-    shadowOffset: {width: 0, height: 3},
-    shadowRadius: 19,
-    shadowOpacity: 0.06,
-    shadowColor: 'black',
-  },
-  cellContent: {
-    flex: 1,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    marginLeft: 28,
-    alignItems: 'center',
-  },
   schoolCellContent: {
     marginTop: 20,
     marginBottom: 21,
