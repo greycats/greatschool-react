@@ -74,6 +74,30 @@ export class SchoolIcon extends Component {
   }
 }
 
+export class GeneralCell extends Component {
+  static propTypes = View.propTypes;
+
+  render() {
+    return (
+      <View style={styles.cellBackground} {...this.props} />
+    )
+  }
+}
+
+export class SchoolCellMore extends Component {
+  render() {
+    let {count, ...otherProps} = this.props;
+    return (
+      <GeneralCell {...otherProps}>
+      <View style={[styles.cellContent, styles.schoolCellMoreContent]}>
+        <Text style={styles.moreText}>{count} More Schools</Text>
+        <Image source={require('./images/disclosure_button.png')} />
+      </View>
+      </GeneralCell>
+    );
+  }
+}
+
 export class SchoolCell extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -115,8 +139,8 @@ export class SchoolCell extends Component {
   render() {
     let {name, address, distance, count, ratings, reviews, ...otherProps} = this.props;
     return (
-      <View style={styles.cellBackground} {...otherProps}>
-        <View style={styles.cellContent}>
+      <GeneralCell {...otherProps}>
+        <View style={[styles.cellContent, styles.schoolCellContent]}>
         <View style={{flexDirection: 'column'}}>
         <Text style={styles.cellTitle}>{name}</Text>
         <Text style={styles.cellAddress}>{address}</Text>
@@ -128,7 +152,7 @@ export class SchoolCell extends Component {
         <Text style={styles.reviewsCount}>{reviews} reviews</Text>
         </View>
         </View>
-      </View>
+      </GeneralCell>
     );
   }
 }
@@ -149,10 +173,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     flexDirection: 'row',
-    marginTop: 20,
     marginLeft: 28,
+    alignItems: 'center',
+  },
+  schoolCellContent: {
+    marginTop: 20,
     marginBottom: 21,
-    marginRight: 20,
+    marginRight: 18,
+  },
+  schoolCellMoreContent: {
+    marginTop: 16,
+    marginBottom: 17,
+    marginRight: 15,
   },
   cellTitle: {
     fontFamily: "ProximaNova-Semibold",
@@ -198,6 +230,12 @@ const styles = StyleSheet.create({
   schoolCount: {
     fontSize: 29.42,
     color: 'white',
+  },
+  moreText: {
+    fontFamily: "ProximaNova-Regular",
+    fontSize: 18,
+    color: '#3A4857',
+    letterSpacing: 0.36,
   },
   ratings: {
     flexDirection: 'row',

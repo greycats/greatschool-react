@@ -11,7 +11,11 @@ import {Divider, SchoolList} from './UI';
 
 import Ads from './ads';
 import {GradientText} from './gradient';
-import SchoolsIndicator, {SchoolIcon, SchoolCell} from './NearbySchools';
+import SchoolsIndicator, {
+  SchoolIcon,
+  SchoolCell,
+  SchoolCellMore
+} from './NearbySchools';
 
 export default class HomeScene extends Component {
   render() {
@@ -58,6 +62,7 @@ export class PickSchoolScene extends Component {
         <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={9} ratings={4} reviews={214} />
         <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={5} ratings={3} reviews={114} />
         <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={9} ratings={4} reviews={314} />
+        <SchoolCellMore count={7} />
         </View>
         </View>
       </ScrollView>
