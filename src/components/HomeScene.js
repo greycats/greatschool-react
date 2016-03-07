@@ -7,7 +7,7 @@ import React, {
   Text,
   ScrollView,
 } from 'react-native';
-import {Divider, SchoolList, Background} from './UI';
+import {Divider, SchoolList} from './UI';
 
 import Ads from './ads';
 import {GradientText} from './gradient';
@@ -16,7 +16,7 @@ import SchoolsIndicator, {SchoolIcon} from './NearbySchools';
 export default class HomeScene extends Component {
   render() {
     return (
-      <Background style={styles.container}>
+      <View style={styles.container}>
         <SchoolsIndicator onExplore={e=> {
           this.props.navigator.push({name: 'home-step2', title: 'Pick a School'});
         }} />
@@ -27,7 +27,7 @@ export default class HomeScene extends Component {
             //TODO
           }} />
         </View>
-      </Background>
+      </View>
     );
   }
 }
@@ -35,36 +35,31 @@ export default class HomeScene extends Component {
 export class PickSchoolScene extends Component {
   render() {
     return (
-      <View>
-      <Background style={styles.background}>
-      <View style={styles.schools}>
-        <SchoolIcon name={'elementary schools'} icon={require('./images/elementary_schools.png')} onPress={(e) => {console.log(e);}}/>
-        <Divider vertical={true} />
-        <SchoolIcon name={'middle schools'} icon={require('./images/middle_schools.png')} count={17} />
-        <Divider vertical={true} />
-        <SchoolIcon name={'high schools'} icon={require('./images/high_schools.png')} count={99} />
-      </View>
-      <Divider />
-      <View style={styles.allNearBy}>
-        <SchoolIcon name={'all nearby schools'} icon={require('./images/nearby_schools.png')} horizontal={true} />
-      </View>
-      </Background>
-      <ScrollView style={styles.pickScrollView} contentInset={{top: 355}} contentOffset={{y: -355}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+        <View>
+          <View style={styles.schools}>
+            <SchoolIcon name={'elementary schools'} icon={require('./images/elementary_schools.png')} onPress={(e) => {console.log(e);}}/>
+            <Divider vertical={true} />
+            <SchoolIcon name={'middle schools'} icon={require('./images/middle_schools.png')} count={17} />
+            <Divider vertical={true} />
+            <SchoolIcon name={'high schools'} icon={require('./images/high_schools.png')} count={99} />
+          </View>
+          <Divider />
+          <View style={styles.allNearBy}>
+            <SchoolIcon name={'all nearby schools'} icon={require('./images/nearby_schools.png')} horizontal={true} scale={0.6} />
+          </View>
+        </View>
         <View style={{height: 1000, backgroundColor:'#F0F5F6'}}></View>
       </ScrollView>
-      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  background: {
-    paddingBottom: 95,
-  },
-  pickScrollView: {
+  scrollView: {
     flex: 1,
     backgroundColor: 'transparent',
-    marginTop: -355,
+    marginTop: 64,
   },
   pickScrollViewContainer: {
     marginTop: 1,
@@ -73,13 +68,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   schools: {
-    marginTop: 111,
+    marginTop: 47,
     height: 189,
     marginBottom: 29,
     flexDirection: 'row',
   },
   allNearBy: {
     flex: 1,
+    paddingTop: 5,
+    paddingBottom: 29,
     flexDirection: 'row',
     // alignItems: 'center',
     justifyContent: 'center',

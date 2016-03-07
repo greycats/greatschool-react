@@ -15,10 +15,10 @@ class GreatSchool extends React.Component {
       'search': <SearchScene />,
     };
     return (
-      <React.View style={{flex: 1, backgroundColor: '#F0F5F6'}}>
+      <Background type="home-step1">
         <Navigator map={route} />
         <TabBar />
-      </React.View>
+      </Background>
     );
   }
 }

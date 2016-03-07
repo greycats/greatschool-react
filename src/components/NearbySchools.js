@@ -45,6 +45,7 @@ export default class SchoolsIndicator extends Component {
 export class SchoolIcon extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
+    scale: PropTypes.number,
     horizontal: PropTypes.bool,
     icon: PropTypes.number.isRequired,
     count: PropTypes.number,
@@ -54,38 +55,30 @@ export class SchoolIcon extends Component {
   render() {
     let {name, icon, count, ...otherProps} = this.props;
     let opacity = count ? 1 : 0;
+    let size = 71 * (this.props.scale || 1);
+    let schoolSize = this.props.horizontal ? {height: size, marginVertical: 5, flexDirection: 'row'} : {width: size, marginHorizontal: 5, flex: 1};
+
+    let backgroundColor = `rgba(21, 82, 147, ${size < 71 ? 0.5 : 1})`;
+    let avatar = {width: size, height: size, borderRadius: size / 2, backgroundColor, overflow: 'visible'};
+    let textSize = this.props.horizontal ? {marginLeft: 19} : {marginTop: 19};
     return (
-      <TouchableOpacity style={[this.props.horizontal ? styles.schoolH : styles.schoolV]} {...otherProps}>
-        <Image style={styles.schoolAvatar} source={icon}>
+      <TouchableOpacity style={[styles.school, schoolSize]} {...otherProps}>
+        <Image style={avatar} source={icon}>
           <View style={[styles.schoolSmallCountBackground, {opacity}]}>
             <Text style={styles.schoolSmallCount}>{count}</Text>
           </View>
         </Image>
-        <Text style={[styles.text, styles.schoolCaption]} numberOfLines={0}>{name.toUpperCase()}</Text>
+        <Text style={[styles.text, styles.schoolCaption, textSize]}>{name.toUpperCase()}</Text>
       </TouchableOpacity>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  schoolH: {
-    flexDirection: 'row',
-  },
-  schoolV: {
-    flex: 1,
+  school: {
     paddingTop: 20,
     alignItems: 'center',
     alignSelf: 'flex-start',
-    width: 70,
-    marginHorizontal: 5,
-    // flexDirection: 'column',
-  },
-  schoolAvatar: {
-    backgroundColor: '#155293',
-    borderRadius: 35.5,
-    width: 71,
-    height: 71,
-    overflow: 'visible',
   },
   schoolSmallCountBackground: {
     width: 23,
@@ -108,7 +101,6 @@ const styles = StyleSheet.create({
   },
   schoolCaption: {
     fontSize: 12,
-    marginTop: 19,
     shadowOpacity: 0.13,
     letterSpacing: 0.86,
     lineHeight: 19,
@@ -128,7 +120,6 @@ const styles = StyleSheet.create({
   caption: {
     alignSelf: 'center',
     flexDirection: 'row',
-    // justifyContent: 'center',
     marginBottom: 30
   },
   text: {
