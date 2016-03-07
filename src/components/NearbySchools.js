@@ -65,7 +65,7 @@ export class SchoolIcon extends Component {
       <TouchableOpacity style={[styles.school, schoolSize]} {...otherProps}>
         <Image style={avatar} source={icon}>
           <View style={[styles.badgeWrapper, styles.schoolSmallCountBackground, {opacity}]}>
-            <Text style={[styles.badge, styles.schoolSmallCount]}>{count}</Text>
+            <Text style={[sharedStyles.buttonText, styles.badge, styles.schoolSmallCount]}>{count}</Text>
           </View>
         </Image>
         <Text style={[styles.boldText, styles.schoolCaption, textSize]}>{name.toUpperCase()}</Text>
@@ -99,9 +99,15 @@ export class SchoolCell extends Component {
   };
 
   renderBadge(count) {
+    let background;
+    if (count < 7) {
+      background = require('./images/badge2.png');
+    } else {
+      background = require('./images/badge.png');
+    }
     return (
-      <Image style={styles.badgeWrapper} source={require('./images/badge.png')}>
-      <Text style={[styles.badge, styles.schoolCount]}>{count}</Text>
+      <Image style={styles.badgeWrapper} source={background}>
+      <Text style={[sharedStyles.buttonText, styles.badge, styles.schoolCount]}>{count}</Text>
       </Image>
     );
   }
@@ -191,8 +197,6 @@ const styles = StyleSheet.create({
   },
   badge: {
     fontFamily: 'ProximaNova-Semibold',
-    backgroundColor: 'transparent',
-    alignSelf: 'center',
   },
   schoolSmallCount: {
     fontSize: 12.57,

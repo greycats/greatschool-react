@@ -183,5 +183,6 @@ export const sharedStyles = React.StyleSheet.create({
   buttonText: {
     backgroundColor: 'transparent',
     textAlign: 'center',
+    alignSelf: 'center',
   }
 });
