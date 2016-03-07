@@ -32,6 +32,16 @@ export class Background extends Component {
   }
 }
 
+export class GeneralCell extends Component {
+  static propTypes = View.propTypes;
+
+  render() {
+    return (
+      <View style={styles.cell} {...this.props} />
+    )
+  }
+}
+
 export class Divider extends Component {
   static propTypes = {
     vertical: PropTypes.bool
@@ -71,16 +81,23 @@ export class Button extends Component {
   };
 
   _onPressButton() {
-    this.props.onClick();
+    if (this.props.onClick) {
+      this.props.onClick();
+    }
   }
 
   render() {
+    var {style, title, onClick, children, colors, ...otherProps} = this.props;
+    if (!colors) {
+      colors = ['#AEE248', '#76C223'];
+    }
+
     return (
-      <TouchableHighlight style={{alignSelf: 'center'}} onPress={this.props.onClick} underlayColor={'transparent'}>
+      <TouchableHighlight style={[style, {alignSelf: 'center'}]} onPress={onClick} underlayColor={'transparent'}>
         <View>
           <LinearGradient style={styles.button}
-            colors={['#AEE248', '#76C223']}>
-            <Text style={styles.buttonText}>{this.props.title}</Text>
+            colors={colors} {...otherProps}>
+            <Text style={styles.buttonText}>{title}</Text>
           </LinearGradient>
         </View>
       </TouchableHighlight>
@@ -115,6 +132,17 @@ export class SchoolListItem extends Component {
 }
 
 const styles = React.StyleSheet.create({
+  cell: {
+    marginLeft: 17,
+    marginRight: 17,
+    marginBottom: 14,
+    borderRadius: 4,
+    backgroundColor: 'white',
+    shadowOffset: {width: 0, height: 3},
+    shadowRadius: 19,
+    shadowOpacity: 0.06,
+    shadowColor: 'black',
+  },
   list: {
     backgroundColor: '#F0F5F6',
     flexDirection: 'column',
@@ -141,5 +169,20 @@ const styles = React.StyleSheet.create({
     fontSize: 15,
     color: 'white',
     letterSpacing: 1.07,
+  }
+});
+
+export const sharedStyles = React.StyleSheet.create({
+  cellContent: {
+    flex: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    marginLeft: 28,
+    alignItems: 'center',
+  },
+  buttonText: {
+    backgroundColor: 'transparent',
+    textAlign: 'center',
+    alignSelf: 'center',
   }
 });
