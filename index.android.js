@@ -1,51 +1,26 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
 'use strict';
-import React, {
-  AppRegistry,
-  Component,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
 
-class GreatSchool extends Component {
+import React from 'react-native';
+import {Background} from './src/components/UI';
+import TabBar from './src/components/tab';
+import Navigator from './src/components/nav';
+import HomeScene, {PickSchoolScene} from './src/components/HomeScene';
+import SearchScene from './src/components/SearchScene';
+
+class GreatSchool extends React.Component {
   render() {
+    let route = {
+      'home-step1': <HomeScene />,
+      'home-step2': <PickSchoolScene />,
+      'search': <SearchScene />,
+    };
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <Background type="home-step1">
+        <Navigator map={route} />
+        <TabBar />
+      </Background>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-AppRegistry.registerComponent('GreatSchool', () => GreatSchool);
+React.AppRegistry.registerComponent('GreatSchool', () => GreatSchool);

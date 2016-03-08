@@ -131,10 +131,10 @@ export class RecommendContents extends Component {
     return (
       <View>
       <GeneralCell {...otherProps}>
+      <TouchableOpacity style={styles.recommendContent}>
       <Image style={styles.recommendedImage2} source={require('./images/shutterstock2.jpg')} />
       <Text style={[sharedStyles.buttonText, styles.recommendedSubtitle]}>EASY LEARNING</Text>
-      <Text style={[sharedStyles.buttonText, styles.recommendedText]}>Free online collection of videos aimed at helping you understand your kid’s grade-level expectations</Text>
-      <Button style={styles.exploreButton} colors={['#F99913', '#F26620']} start={[0.72, 0]} end={[0.62, 1]} title={"Let’s explore"} />
+      </TouchableOpacity>
       </GeneralCell>
       {this.renderPageControl()}
       </View>
@@ -180,6 +180,7 @@ const styles = React.StyleSheet.create({
     fontSize: 12,
     color: '#585859',
     letterSpacing: 0.67,
+    paddingBottom: 112,
   },
   recommendedText: {
     fontFamily: 'ProximaNova-Regular',
@@ -199,10 +200,7 @@ const styles = React.StyleSheet.create({
     alignSelf: 'center',
   },
   recommendedImage2: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
+    flex: 1,
     alignSelf: 'center',
   },
   pageControl: {
