@@ -14,7 +14,7 @@ export class GradientText extends React.Component {
     ...React.View.propTypes
   };
   render() {
-    let { borderColor, colors, fontSize, kern, ...otherProps } = this.props;
-    return <Text style={{fontSize: fontSize, letterSpacing: kern, color: colors[0], borderColor: borderColor}} {...otherProps} />;
+    let { borderColor, colors, fontSize, kern, text, ...otherProps } = this.props;
+    return <Text style={{fontSize: fontSize, letterSpacing: kern, color: colors[0], borderColor: borderColor}} {...otherProps}>{text}</Text>;
   }
 }
