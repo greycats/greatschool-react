@@ -129,11 +129,15 @@ export class RecommendContents extends Component {
   render() {
     let {children, ...otherProps} = this.props;
     return (
-      <View>
+      <View style={{paddingTop: 42}}>
+      <GeneralCell style={styles.backCell2} />
+      <GeneralCell style={styles.backCell1} />
       <GeneralCell {...otherProps}>
       <TouchableOpacity style={styles.recommendContent}>
       <Image style={styles.recommendedImage2} source={require('./images/shutterstock2.jpg')} />
       <Text style={[sharedStyles.buttonText, styles.recommendedSubtitle]}>EASY LEARNING</Text>
+      <View style={{backgroundColor: '#0DA7E3', width: 20, height: 4, alignSelf: 'center'}}/>
+      <Text style={[sharedStyles.buttonText, styles.recommendedSubtitle2]}>A tasty way to teach your little ones how to wait</Text>
       </TouchableOpacity>
       </GeneralCell>
       {this.renderPageControl()}
@@ -180,7 +184,7 @@ const styles = React.StyleSheet.create({
     fontSize: 12,
     color: '#585859',
     letterSpacing: 0.67,
-    paddingBottom: 112,
+    paddingBottom: 13,
   },
   recommendedText: {
     fontFamily: 'ProximaNova-Regular',
@@ -192,12 +196,37 @@ const styles = React.StyleSheet.create({
     paddingHorizontal: 50,
     paddingBottom: 16,
   },
+  recommendedSubtitle2: {
+    color: '#1C252E',
+    fontFamily: 'ProximaNova-Semibold',
+    fontSize: 20,
+    paddingHorizontal: 50,
+    lineHeight: 25,
+    paddingTop: 10,
+    paddingBottom: 37,
+  },
   recommendedImage: {
     position: 'absolute',
     left: 0,
     right: 0,
     bottom: 0,
     alignSelf: 'center',
+  },
+  backCell1: {
+    position: 'absolute',
+    height: 200,
+    left: 15,
+    right: 15,
+    top: 30,
+    shadowOpacity: 0.12
+  },
+  backCell2: {
+    position: 'absolute',
+    height: 200,
+    top: 21,
+    left: 29,
+    right: 29,
+    shadowOpacity: 0.12
   },
   recommendedImage2: {
     flex: 1,

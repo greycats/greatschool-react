@@ -36,8 +36,9 @@ export class GeneralCell extends Component {
   static propTypes = View.propTypes;
 
   render() {
+    let {style, ...otherProps} = this.props;
     return (
-      <View style={styles.cell} {...this.props} />
+      <View style={[styles.cell, style]} {...otherProps} />
     )
   }
 }
