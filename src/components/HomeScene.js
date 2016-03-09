@@ -63,9 +63,7 @@ export class PickSchoolScene extends Component {
   renderSchoolList() {
     return (
       <Section title={"nearby schools"}>
-      <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={9} ratings={4} reviews={214} />
-      <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={5} ratings={3} reviews={114} />
-      <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={9} ratings={4} reviews={314} />
+      {SchoolCell.generateRandomSchools.bind(this)(3)}
       <SchoolCellMore count={7} />
       </Section>
     );
@@ -75,7 +73,7 @@ export class PickSchoolScene extends Component {
     return (
       <Section title={"recommended content"}>
       <RecommendContent />
-      <RecommendContents totalPage={5}/>
+      <RecommendContents totalPage={5} />
       <AdsCells />
       </Section>
     );
@@ -83,7 +81,7 @@ export class PickSchoolScene extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+      <ScrollView style={[styles.container, {marginTop: 20}]} showsVerticalScrollIndicator={false}>
         {this.renderSummary()}
         <Sections>
           {this.renderSchoolList()}
@@ -95,16 +93,12 @@ export class PickSchoolScene extends Component {
 }
 
 const styles = StyleSheet.create({
-  scrollView: {
-    flex: 1,
-    backgroundColor: 'transparent',
-    marginTop: 20,
-  },
   container: {
     flex: 1,
   },
   navText: {
     marginTop: 39,
+    fontFamily: 'ProximaNova-Bold',
   },
   schoolIcons: {
     marginTop: 47,

@@ -11,6 +11,7 @@ import React, {
 } from 'react-native';
 import {Sections} from './section';
 import {SchoolCell} from './NearbySchools';
+import {generateRandomSchools} from './UI';
 
 export default class SearchScene extends Component {
   constructor() {
@@ -19,6 +20,7 @@ export default class SearchScene extends Component {
       text: ''
     }
   }
+
   renderSearchBox() {
     return (
       <View style={styles.searchBoxWrapper}>
@@ -31,6 +33,7 @@ export default class SearchScene extends Component {
       </View>
     );
   }
+
   render() {
     return (
       <View style={styles.container}>
@@ -38,12 +41,7 @@ export default class SearchScene extends Component {
       <Sections style={{flex: 1}}>
       <ScrollView>
       <View style={{height: 20}} />
-      <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={9} ratings={4} reviews={214} />
-      <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={5} ratings={3} reviews={114} />
-      <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={9} ratings={4} reviews={314} />
-      <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={9} ratings={4} reviews={214} />
-      <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={5} ratings={3} reviews={114} />
-      <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={9} ratings={4} reviews={314} />
+      {SchoolCell.generateRandomSchools.bind(this)(6)}
       </ScrollView>
       </Sections>
       </View>
@@ -53,7 +51,7 @@ export default class SearchScene extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 64,
+    marginTop: 70,
     flex: 1,
   },
   searchBoxWrapper: {

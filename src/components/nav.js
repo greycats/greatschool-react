@@ -60,20 +60,18 @@ const NavigationBarRouteMapper = {
     if (route.name == "search") {
       return (
         <TouchableOpacity onPress={() => {}}>
-          <Image style={styles.navIcon} source={require('./images/hamburger.png')} />
+          <Image style={styles.navLeftIcon} source={require('./images/hamburger.png')} />
         </TouchableOpacity>
       );
     }
-    if (index === 0) {
+    if (index === 0 || route.title == null) {
       return null
     }
     const previousRoute = navState.routeStack[index - 1];
     return (
       <TouchableOpacity
-        onPress={() => navigator.pop()} style={{paddingLeft: 10}}>
-        <Text style={styles.navText}>
-          {previousRoute.title}
-        </Text>
+        onPress={() => navigator.pop()} style={{paddingLeft: 0}}>
+        <Image style={styles.navLeftIcon} source={require('./images/back.png')} />
       </TouchableOpacity>
     )
   },
@@ -81,8 +79,9 @@ const NavigationBarRouteMapper = {
   RightButton: (route, navigator, index, navState) => {
     if (route.name == "search") {
       return (
-        <TouchableOpacity onPress={() => {}}>
-          <Image style={styles.navIcon} source={require('./images/map_icon.png')} />
+        <TouchableOpacity
+          onPress={() => {}}>
+          <Image style={styles.navRightIcon} source={require('./images/map_icon.png')} />
         </TouchableOpacity>
       );
     }
@@ -99,7 +98,7 @@ const NavigationBarRouteMapper = {
       title = <Image style={styles.logo} source={require('./images/logo.png')} />;
     }
     return (
-      <View style={{flexDirection: 'column', flex: 1, justifyContent: 'flex-end'}}>
+      <View style={styles.navTitle}>
         {title}
       </View>
     );
@@ -107,16 +106,21 @@ const NavigationBarRouteMapper = {
 };
 
 const styles = StyleSheet.create({
-  navIcon: {
-    top: 12,
-    marginHorizontal: 8,
+  navTitle: {
+    justifyContent: 'center',
+    flexDirection: 'column',
+    marginTop: 20,
+    flex: 1,
   },
-  navText: {
-    marginVertical: 9,
-    color: 'white'
+  navLeftIcon: {
+    marginTop: 9,
+    marginLeft: 5,
+  },
+  navRightIcon: {
+    marginTop: 9,
+    marginRight: 5,
   },
   logo: {
-    width: 107,
-    height: 25,
+    marginTop: 20,
   },
 });

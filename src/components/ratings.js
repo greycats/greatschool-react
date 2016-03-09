@@ -20,11 +20,11 @@ export default class Ratings extends React.Component {
     let {ratings, style, ...otherProps} = this.props;
     return (
       <View {...otherProps} style={[style, {flexDirection: 'row'}]}>
-        {this.renderRating(ratings > 0)}
-        {this.renderRating(ratings > 1)}
-        {this.renderRating(ratings > 2)}
-        {this.renderRating(ratings > 3)}
-        {this.renderRating(ratings > 4)}
+      {this.renderRating(ratings > 0)}
+      {this.renderRating(ratings > 1)}
+      {this.renderRating(ratings > 2)}
+      {this.renderRating(ratings > 3)}
+      {this.renderRating(ratings > 4)}
       </View>
     );
   }

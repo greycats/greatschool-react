@@ -13,6 +13,7 @@ import {GradientText} from './gradient';
 import {Button, GeneralCell, sharedStyles, TextShadow} from './UI';
 import Ratings from './ratings';
 import Badge, {SmallBadge} from './badge';
+import Actions from '../actions'
 
 export class SchoolsIndicator extends Component {
   static propTypes = {
@@ -91,13 +92,31 @@ export class SchoolCell extends Component {
     count: PropTypes.number.isRequired,
     ratings: PropTypes.number.isRequired,
     reviews: PropTypes.number.isRequired,
+    onSelect: PropTypes.func.isRequired,
   };
+
+  static generateRandomSchools(length) {
+    var random = (cap) => Math.floor(Math.random() * cap);
+    return Array.from({length}, (v, i) => {
+      return (
+        <SchoolCell
+          key={i}
+          name={"School Name A"}
+          address={"Public | 9 - 12 | Pleasant Hill, CA"}
+          distance={"3.25 Miles"}
+          onSelect={(e) => this.props.navigator.push({name: "school", title: "Overview"})}
+          count={4 + random(6)} ratings={2 + random(4)} reviews={random(500)} />
+      )
+    })
+  }
 
   render() {
     let {name, address, distance, count, ratings, reviews, ...otherProps} = this.props;
     return (
       <GeneralCell {...otherProps}>
-        <TouchableOpacity style={[sharedStyles.cellContent, styles.schoolCellContent]}>
+        <TouchableOpacity
+          style={[sharedStyles.cellContent, styles.schoolCellContent]}
+          onPress={this.props.onSelect.bind(this)}>
         <View style={{flexDirection: 'column'}}>
         <Text style={styles.cellTitle}>{name}</Text>
         <Text style={styles.cellAddress}>{address}</Text>

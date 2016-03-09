@@ -1,20 +1,20 @@
 'use strict';
 
 import alt from '../alt'
-import Actions from '../actions/Actions'
+import Actions from '../actions'
 
 class PageControlStore {
   constructor() {
     this.bindListeners({
       switchPageControl: Actions.switchPageControl,
     });
-    this.state = {
-      currentPage: 0
-    };
+    this.state = {};
   }
 
-  switchPageControl(page) {
-    this.setState({currentPage: page});
+  switchPageControl(object) {
+    var hash = {};
+    hash[object.id] = object.page;
+    this.setState(hash);
   }
 }
 

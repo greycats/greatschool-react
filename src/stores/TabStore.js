@@ -1,7 +1,7 @@
 'use strict';
 
 import alt from '../alt'
-import Actions from '../actions/Actions'
+import Actions from '../actions'
 
 class TabStore {
   constructor() {

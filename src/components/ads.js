@@ -11,8 +11,9 @@ import React, {
 } from 'react-native';
 import {Button, GeneralCell, sharedStyles} from './UI';
 import LinearGradient from 'react-native-linear-gradient';
-import PageControlStore from '../stores/PageControlStore';
-import Actions from '../actions/Actions';
+import Actions from '../actions';
+import CellGroup from './cell_group';
+import PageControl from './page_control';
 
 export default class Ads extends Component {
   static propTypes = {
@@ -50,23 +51,13 @@ export class AdsCells extends Component {
     );
   }
 
-  renderSeparater() {
-    return (
-      <View style={{height: 1, backgroundColor: '#D1DFE5', opacity: 0.8, flex: 1}}/>
-    )
-  }
-
   render() {
-    let {children, ...otherProps} = this.props;
-
     return (
-      <GeneralCell {...otherProps}>
+      <CellGroup>
       {this.renderAds("Feeling Word Game", require('./images/ads_icon1.jpg'))}
-      {this.renderSeparater()}
       {this.renderAds("Emotional Toolbox", require('./images/ads_icon2.jpg'))}
-      {this.renderSeparater()}
       {this.renderAds("Through a child’s eyes videos", require('./images/ads_icon3.jpg'))}
-      </GeneralCell>
+      </CellGroup>
     );
   }
 }
@@ -95,39 +86,8 @@ export class RecommendContents extends Component {
     totalPage: PropTypes.number.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = PageControlStore.getState();
-  }
-
-  componentDidMount() {
-    PageControlStore.listen(this.onPageChange.bind(this));
-  }
-
-  componentWillUnmount() {
-    PageControlStore.unlisten(this.onPageChange.bind(this));
-  }
-
-  onPageChange(page) {
-    this.setState(page);
-  }
-
-  renderPageControl() {
-    let length = this.props.totalPage;
-    let page = this.state.currentPage;
-    return (
-      <View style={styles.pageControl}>
-      {
-        Array.from({length}, (v, i) => {
-          return <TouchableOpacity activeOpacity={1} onPress={() => Actions.switchPageControl(i)} key={i} style={[styles.pageControlDot, {backgroundColor: (i == page) ? '#8593A2' : '#C1D2D98E'}]} />
-        })
-      }
-      </View>
-    );
-  }
-
   render() {
-    let {children, ...otherProps} = this.props;
+    let {children, totalPage, ...otherProps} = this.props;
     return (
       <View style={{paddingTop: 42}}>
       <GeneralCell style={styles.backCell2} />
@@ -140,7 +100,7 @@ export class RecommendContents extends Component {
       <Text style={[sharedStyles.buttonText, styles.recommendedSubtitle2]}>A tasty way to teach your little ones how to wait</Text>
       </TouchableOpacity>
       </GeneralCell>
-      {this.renderPageControl()}
+      <PageControl id={"recomment_contents"} totalPage={totalPage} />
       </View>
     );
   }
@@ -231,18 +191,6 @@ const styles = React.StyleSheet.create({
   recommendedImage2: {
     flex: 1,
     alignSelf: 'center',
-  },
-  pageControl: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    paddingTop: 12,
-    paddingBottom: 32,
-  },
-  pageControlDot: {
-    borderRadius: 5,
-    width: 10,
-    height: 10,
-    marginHorizontal: 3,
   },
   exploreButton: {
     marginBottom: 116,

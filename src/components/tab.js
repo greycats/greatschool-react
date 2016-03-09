@@ -10,7 +10,7 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 import TabStore from '../stores/TabStore';
-import Actions from '../actions/Actions';
+import Actions from '../actions';
 import connectToStores from 'alt-utils/lib/connectToStores';
 
 class TabBarItem extends Component {

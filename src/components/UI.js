@@ -162,7 +162,7 @@ export const sharedStyles = React.StyleSheet.create({
   navText: {
     textAlign: 'center',
     alignSelf: 'center',
-    fontFamily: 'ProximaNova-Bold',
+    fontFamily: 'ProximaNova-Semibold',
     fontSize: 18,
     color: '#FFFFFF'
   },
