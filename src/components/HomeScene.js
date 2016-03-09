@@ -25,13 +25,13 @@ export default class HomeScene extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <SchoolsIndicator onExplore={e=> {
+        <SchoolsIndicator onExplore={() => {
           this.props.navigator.push({name: 'home-step2', title: 'Pick a School'});
         }} />
         <View>
           <Divider />
-          <Ads onClick={e=>{
-            this.props.navigator.push({name: 'ads', title: 'Ads'})
+          <Ads onClick={() => {
+            this.props.navigator.push({name: 'ads', title: 'Ads'});
             //TODO
           }} />
         </View>

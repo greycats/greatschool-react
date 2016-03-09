@@ -38,8 +38,9 @@ export default class Navigator extends Component {
       }
     };
     let scene = this.props.map[route.name];
-    // let style=
-    return React.cloneElement(scene, {navigator, style: styles.container});
+    if (scene) {
+        return React.cloneElement(scene, {navigator, style: styles.container});
+    }
   }
 
   render() {
@@ -105,9 +106,6 @@ const NavigationBarRouteMapper = {
 };
 
 const styles = StyleSheet.create({
-  navigationBar: {
-    height: 100
-  },
   navIcon: {
     top: 12,
     marginHorizontal: 8,
