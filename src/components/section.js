@@ -4,8 +4,9 @@ import React, {Component, View, Text} from 'react-native';
 
 export class Sections extends Component {
   render() {
+    let {style, ...otherProps} = this.props;
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, style]}>
         <View style={styles.shadowWrapper}>
           <View style={styles.shadow} />
         </View>
@@ -34,13 +35,16 @@ const styles = React.StyleSheet.create({
     flexDirection: 'column',
   },
   shadowWrapper: {
-    flex: 1,
     flexDirection: 'row',
     backgroundColor: 'transparent',
     overflow: 'visible',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
   },
   cells: {
-    marginTop: 52,
+    marginTop: 13,
   },
   shadow: {
     flex: 1,
@@ -49,16 +53,14 @@ const styles = React.StyleSheet.create({
     marginTop: -10,
     overflow: 'visible',
     shadowColor: 'black',
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.2,
     shadowOffset: {width: 0, height: 2},
     shadowRadius: 16,
   },
   headerText: {
-    position: 'absolute',
-    left: 20,
-    top: 20,
+    marginLeft: 20,
+    marginTop: 20,
     backgroundColor: 'transparent',
-    flex: 1,
     alignSelf: 'flex-start',
     fontFamily: 'ProximaNova-Semibold',
     fontSize: 14,

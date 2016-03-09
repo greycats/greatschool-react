@@ -29,10 +29,10 @@ export default class Navigator extends Component {
     this.onTabChange = (tab) => {
       switch (tab.selectedTab) {
         case 0:
-          navigator.resetTo({name: 'home-step1'});
+          navigator.resetTo({name: 'home-step1', index: 0});
           break;
         case 1:
-          navigator.resetTo({name: 'search', title: 'Search'});
+          navigator.resetTo({name: 'search', title: 'Search', index: 0});
           break;
         default:
           break;
