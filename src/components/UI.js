@@ -170,7 +170,7 @@ const styles = React.StyleSheet.create({
     fontSize: 15,
     color: 'white',
     letterSpacing: 1.07,
-  }
+  },
 });
 
 export const sharedStyles = React.StyleSheet.create({
@@ -185,5 +185,12 @@ export const sharedStyles = React.StyleSheet.create({
     backgroundColor: 'transparent',
     textAlign: 'center',
     alignSelf: 'center',
+  },
+  navText: {
+    textAlign: 'center',
+    alignSelf: 'center',
+    fontFamily: 'ProximaNova-Bold',
+    fontSize: 18,
+    color: '#FFFFFF'
   }
 });

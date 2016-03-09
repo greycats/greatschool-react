@@ -7,7 +7,7 @@ import React, {
   Text,
   ScrollView,
 } from 'react-native';
-import {Divider, SchoolList} from './UI';
+import {Divider, SchoolList, sharedStyles} from './UI';
 
 import Ads, {
   AdsCells,
@@ -26,7 +26,7 @@ export default class HomeScene extends Component {
     return (
       <View style={styles.container}>
         <SchoolsIndicator onExplore={() => {
-          this.props.navigator.push({name: 'home-step2', title: 'Pick a School'});
+          this.props.navigator.push({name: 'home-step2', index: 1});
         }} />
         <View>
           <Divider />
@@ -44,6 +44,7 @@ export class PickSchoolScene extends Component {
   renderSummary() {
     return (
       <View>
+        <Text style={[sharedStyles.navText, styles.navText]}>Pick a School</Text>
         <View style={styles.schoolIcons}>
           <SchoolIcon name={'elementary schools'} icon={require('./images/elementary_schools.png')} onPress={(e) => {console.log(e);}}/>
           <Divider vertical={true} />
@@ -105,7 +106,10 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
     backgroundColor: 'transparent',
-    marginTop: 64,
+    marginTop: 20,
+  },
+  navText: {
+    marginTop: 39,
   },
   pickScrollViewContainer: {
     marginTop: 1,

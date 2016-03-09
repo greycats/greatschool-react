@@ -9,6 +9,7 @@ import React, {
   TouchableOpacity,
 } from 'react-native';
 import TabStore from '../stores/TabStore';
+import {sharedStyles} from './UI';
 
 export default class Navigator extends Component {
   constructor() {
@@ -48,7 +49,7 @@ export default class Navigator extends Component {
       initialRoute={{name: 'home-step1', index: 0}}
       renderScene={this.renderScene.bind(this)}
       navigationBar={
-        <React.Navigator.NavigationBar routeMapper={NavigationBarRouteMapper} style={styles.navigationBar}/>
+        <React.Navigator.NavigationBar routeMapper={NavigationBarRouteMapper} />
       }
     />
   }
@@ -93,8 +94,8 @@ const NavigationBarRouteMapper = {
   Title: (route, navigator, index, navState) => {
     var title;
     if (route.title != null) {
-      title = <Text style={styles.title}>{route.title}</Text>;
-    } else {
+      title = <Text style={sharedStyles.navText}>{route.title}</Text>;
+    } else if (route.index == 0) {
       title = <Image style={styles.logo} source={require('./images/logo.png')} />;
     }
     return (
@@ -118,9 +119,4 @@ const styles = StyleSheet.create({
     width: 107,
     height: 25,
   },
-  title: {
-    fontFamily: 'ProximaNova-Bold',
-    fontSize: 18,
-    color: '#FFFFFF'
-  }
 });
