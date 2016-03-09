@@ -141,7 +141,7 @@ const styles = React.StyleSheet.create({
 
 export const TextShadow = {
   shadowColor: '#004188',
-  shadowOpacity: 0.33,
+  shadowOpacity: 0.22,
   shadowOffset: {width: 0, height: 5},
   shadowRadius: 6
 };
