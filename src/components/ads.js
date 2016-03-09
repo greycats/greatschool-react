@@ -12,7 +12,7 @@ import React, {
 import {Button, GeneralCell, sharedStyles} from './UI';
 import LinearGradient from 'react-native-linear-gradient';
 import Actions from '../actions';
-import CellGroup from './cell_group';
+import CellGroup, {CellStack} from './cell_group';
 import PageControl from './page_control';
 
 export default class Ads extends Component {
@@ -89,17 +89,15 @@ export class RecommendContents extends Component {
   render() {
     let {children, totalPage, ...otherProps} = this.props;
     return (
-      <View style={{paddingTop: 42}}>
-      <GeneralCell style={styles.backCell2} />
-      <GeneralCell style={styles.backCell1} />
-      <GeneralCell {...otherProps}>
+      <View>
+      <CellStack {...otherProps}>
       <TouchableOpacity style={styles.recommendContent}>
       <Image style={styles.recommendedImage2} source={require('./images/shutterstock2.jpg')} />
       <Text style={[sharedStyles.buttonText, styles.recommendedSubtitle]}>EASY LEARNING</Text>
       <View style={{backgroundColor: '#0DA7E3', width: 20, height: 4, alignSelf: 'center'}}/>
       <Text style={[sharedStyles.buttonText, styles.recommendedSubtitle2]}>A tasty way to teach your little ones how to wait</Text>
       </TouchableOpacity>
-      </GeneralCell>
+      </CellStack>
       <PageControl id={"recomment_contents"} totalPage={totalPage} />
       </View>
     );
@@ -172,22 +170,7 @@ const styles = React.StyleSheet.create({
     bottom: 0,
     alignSelf: 'center',
   },
-  backCell1: {
-    position: 'absolute',
-    height: 200,
-    left: 15,
-    right: 15,
-    top: 30,
-    shadowOpacity: 0.12
-  },
-  backCell2: {
-    position: 'absolute',
-    height: 200,
-    top: 21,
-    left: 29,
-    right: 29,
-    shadowOpacity: 0.12
-  },
+
   recommendedImage2: {
     flex: 1,
     alignSelf: 'center',
