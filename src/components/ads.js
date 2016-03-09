@@ -24,7 +24,7 @@ export default class Ads extends Component {
       <View style={styles.ads}>
         <View style={styles.left}>
           <Text style={styles.header}>ARTICLE</Text>
-          <Text style={styles.body} numberOfLines={0}>Are our screen-addicted kids frying their brains?</Text>
+          <Text style={[sharedStyles.shadowText, styles.body]} numberOfLines={0}>Are our screen-addicted kids frying their brains?</Text>
           <Text style={styles.footer}>Content by: GreatKids</Text>
         </View>
         <View style={styles.right}>
@@ -268,11 +268,6 @@ const styles = React.StyleSheet.create({
   body: {
     fontFamily: 'ProximaNova-Semibold',
     fontSize: 18,
-    color: 'white',
-    shadowColor: '#004188',
-    shadowOpacity: 0.22,
-    shadowOffset: {width: 0, height: 5},
-    shadowRadius: 8,
     justifyContent: 'center',
     flexDirection: 'column',
     lineHeight: 24,

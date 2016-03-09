@@ -10,9 +10,9 @@ import React, {
   Image,
 } from 'react-native';
 import {GradientText} from './gradient';
-import {Button, GeneralCell, sharedStyles} from './UI';
+import {Button, GeneralCell, sharedStyles, TextShadow} from './UI';
 import Ratings from './ratings';
-import Badge from './badge';
+import Badge, {SmallBadge} from './badge';
 
 export class SchoolsIndicator extends Component {
   static propTypes = {
@@ -31,12 +31,9 @@ export class SchoolsIndicator extends Component {
       <View style={{flex: 1, justifyContent: 'center'}}>
       <GradientText style={{height: 141}} fontSize={120} kern={-2.3}
         colors={['#FFFFFF', '#D8D8D8']} loc1={[0.64, 1 - 0.376]} loc2={[0.68, 1 - 0.76]}
-        borderColor={'#FAE3E3'}
+        borderColor={'#FAE3E3'} {...TextShadow}
         text={this.state.number.toString()} />
-      <View style={{alignSelf: 'center', flexDirection: 'row', marginBottom: 30}}>
-        <Text style={styles.boldText}>SCHOOLS IN THIS </Text>
-        <Text style={[styles.boldText, styles.underline]}>NEIGHBORHOOD</Text>
-      </View>
+      <Text style={[sharedStyles.shadowText, styles.boldText, {marginBottom: 30}]}>SCHOOLS IN THIS <Text style={styles.underline}>NEIGHBORHOOD</Text></Text>
       <Button title="Let's explore" onClick={this.props.onExplore} />
       </View>
     );
@@ -55,7 +52,6 @@ export class SchoolIcon extends Component {
 
   render() {
     let {name, icon, count, ...otherProps} = this.props;
-    let opacity = count ? 1 : 0;
     let size = 71 * (this.props.scale || 1);
     let schoolSize = this.props.horizontal ? {height: size, marginVertical: 5, flexDirection: 'row'} : {width: size, marginHorizontal: 5, flex: 1};
 
@@ -65,11 +61,9 @@ export class SchoolIcon extends Component {
     return (
       <TouchableOpacity style={[styles.school, schoolSize]} {...otherProps}>
         <Image style={avatar} source={icon}>
-          <View style={[styles.badgeWrapper, styles.schoolSmallCountBackground, {opacity}]}>
-            <Text style={[sharedStyles.buttonText, styles.badge, styles.schoolSmallCount]}>{count}</Text>
-          </View>
+          <SmallBadge number={count} />
         </Image>
-        <Text style={[styles.boldText, styles.schoolCaption, textSize]}>{name.toUpperCase()}</Text>
+        <Text style={[sharedStyles.shadowText, styles.boldText, styles.schoolCaption, textSize]}>{name.toUpperCase()}</Text>
       </TouchableOpacity>
     );
   }
@@ -149,21 +143,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'flex-start',
   },
-  schoolSmallCountBackground: {
-    width: 23,
-    height: 23,
-    borderRadius: 11.5,
-    backgroundColor: '#0B4782',
-    position: 'absolute',
-    top: 0,
-    right: -5,
-    opacity: 1,
-  },
-  schoolSmallCount: {
-    fontSize: 12.57,
-    color: '#6DFFEC',
-    lineHeight: 14,
-  },
   moreText: {
     fontFamily: "ProximaNova-Regular",
     fontSize: 18,
@@ -178,14 +157,9 @@ const styles = StyleSheet.create({
     letterSpacing: 0.24,
   },
   boldText: {
-    color: 'white',
     fontFamily: 'ProximaNova-Bold',
     fontSize: 13,
     textAlign: 'center',
-    shadowColor: '#004188',
-    shadowOpacity: 0.22,
-    shadowOffset: {width: 0, height: 5},
-    shadowRadius: 6,
     letterSpacing: 0.93,
   },
   schoolCaption: {

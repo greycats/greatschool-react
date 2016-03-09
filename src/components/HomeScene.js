@@ -7,7 +7,8 @@ import React, {
   Text,
   ScrollView,
 } from 'react-native';
-import {Divider, SchoolList, sharedStyles} from './UI';
+import {Divider, sharedStyles} from './UI';
+import {Sections, Section} from './section';
 import Ads, {
   AdsCells,
   RecommendContent,
@@ -61,41 +62,33 @@ export class PickSchoolScene extends Component {
 
   renderSchoolList() {
     return (
-      <View>
-      <Text style={styles.headerText}>NEARBY SCHOOLS</Text>
-      <View style={styles.cells}>
+      <Section title={"nearby schools"}>
       <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={9} ratings={4} reviews={214} />
       <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={5} ratings={3} reviews={114} />
       <SchoolCell name={"School Name A"} address={"Public | 9 - 12 | Pleasant Hill, CA"} distance={"3.25 Miles"} count={9} ratings={4} reviews={314} />
       <SchoolCellMore count={7} />
-      </View>
-      </View>
+      </Section>
     );
   }
 
   renderRecommendedContent() {
     return (
-      <View>
-      <Text style={styles.headerText}>RECOMMENDED CONTENT</Text>
-      <View style={styles.cells}>
+      <Section title={"recommended content"}>
       <RecommendContent />
       <RecommendContents totalPage={5}/>
       <AdsCells />
-      </View>
-      </View>
+      </Section>
     );
   }
+
   render() {
     return (
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         {this.renderSummary()}
-        <View style={{backgroundColor:'#F0F5F6', overflow: 'hidden', flexDirection: 'column'}}>
-          <View style={styles.shadowWrapper}>
-            <View style={styles.shadow} />
-          </View>
+        <Sections>
           {this.renderSchoolList()}
           {this.renderRecommendedContent()}
-        </View>
+        </Sections>
       </ScrollView>
     );
   }
@@ -107,23 +100,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     marginTop: 20,
   },
-  navText: {
-    marginTop: 39,
-  },
-  pickScrollViewContainer: {
-    marginTop: 1,
-  },
   container: {
     flex: 1,
+  },
+  navText: {
+    marginTop: 39,
   },
   schoolIcons: {
     marginTop: 47,
     height: 189,
     marginBottom: 29,
     flexDirection: 'row',
-  },
-  cells: {
-    marginTop: 52,
   },
   allNearBy: {
     flex: 1,
@@ -132,36 +119,4 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  shadowWrapper: {
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'transparent',
-    overflow: 'visible',
-  },
-  shadow: {
-    flex: 1,
-    backgroundColor: 'black',
-    height: 10,
-    marginTop: -10,
-    overflow: 'visible',
-    shadowColor: 'black',
-    shadowOpacity: 0.1,
-    shadowOffset: {width: 0, height: 2},
-    shadowRadius: 16,
-  },
-  headerText: {
-    position: 'absolute',
-    left: 20,
-    top: 20,
-    backgroundColor: 'transparent',
-    flex: 1,
-    alignSelf: 'flex-start',
-    fontFamily: 'ProximaNova-Semibold',
-    fontSize: 14,
-    color: '#888889',
-    letterSpacing: 1
-  },
-  nearby: {
-    // alignSelf: 'center'
-  }
 });

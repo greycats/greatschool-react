@@ -33,10 +33,13 @@ extension GradientView {
 @IBDesignable
 class GradientLabel: GradientView {
 	private var attributedText: [NSAttributedString]!
-	//	@IBInspectable var fontName: String = "SFUIText-Semibold" { didSet { updateText() } }
 	@IBInspectable var text: String! { didSet { updateText() } }
 	@IBInspectable var fontSize: CGFloat = 16 { didSet { updateText() } }
 	@IBInspectable var strokeColor: UIColor? = nil { didSet { updateText() } }
+	@IBInspectable var textShadowColor: UIColor? = nil { didSet { setNeedsDisplay() } }
+	@IBInspectable var shadowOffset: CGSize = .zero { didSet { setNeedsDisplay() } }
+	@IBInspectable var shadowRadius: CGFloat = 0 { didSet { setNeedsDisplay() } }
+	@IBInspectable var shadowOpacity: CGFloat = 1 { didSet { setNeedsDisplay() } }
 
 	var kern: CGFloat = 0 { didSet { updateText() } }
 	func updateText() {
@@ -54,6 +57,10 @@ class GradientLabel: GradientView {
 
 	func setBorderColor(color: AnyObject) {
 		strokeColor = RCTConvert.UIColor(color)
+	}
+
+	func setShadowColor(color: AnyObject) {
+		textShadowColor = RCTConvert.UIColor(color)
 	}
 
 	func drawText(context: CGContextRef, rect: CGRect, mode: CGTextDrawingMode, @noescape closure: (() -> ()) = {}) {
@@ -76,7 +83,9 @@ class GradientLabel: GradientView {
 	override func drawRect(rect: CGRect) {
 		guard let context = UIGraphicsGetCurrentContext() else { return }
 		CGContextSaveGState(context)
-		CGContextSetShadowWithColor(context, CGSize(width: 0, height: 5), 6, UIColor(hexRGB: 0x004188, alpha: 0.22).CGColor)
+		if let shadowColor = textShadowColor {
+			CGContextSetShadowWithColor(context, shadowOffset, shadowRadius, shadowColor.colorWithAlphaComponent(shadowOpacity).CGColor)
+		}
 		CGContextSetAlpha(context, 1)
 		CGContextSetAllowsAntialiasing(context, true)
 
@@ -91,6 +100,6 @@ class GradientLabel: GradientView {
 		}
 
 		CGContextRestoreGState(context)
-		
+
 	}
 }

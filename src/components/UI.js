@@ -106,32 +106,6 @@ export class Button extends Component {
   }
 }
 
-export class SchoolList extends Component {
-  static propTypes = {
-    ...React.View.propTypes
-  };
-
-
-  render() {
-    return (
-      <View style={styles.list}>
-      </View>
-    );
-  }
-}
-
-export class SchoolListItem extends Component {
-  static propTypes = {
-    school: PropTypes.object.isRequired
-  };
-
-  render() {
-    return (
-      <View style={styles.listItem} />
-    );
-  }
-}
-
 const styles = React.StyleSheet.create({
   cell: {
     marginLeft: 17,
@@ -143,14 +117,6 @@ const styles = React.StyleSheet.create({
     shadowRadius: 19,
     shadowOpacity: 0.06,
     shadowColor: 'black',
-  },
-  list: {
-    backgroundColor: '#F0F5F6',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  listItem: {
-
   },
   button: {
     borderRadius: 5,
@@ -173,6 +139,13 @@ const styles = React.StyleSheet.create({
   },
 });
 
+export const TextShadow = {
+  shadowColor: '#004188',
+  shadowOpacity: 0.33,
+  shadowOffset: {width: 0, height: 5},
+  shadowRadius: 6
+};
+
 export const sharedStyles = React.StyleSheet.create({
   cellContent: {
     flex: 1,
@@ -192,5 +165,9 @@ export const sharedStyles = React.StyleSheet.create({
     fontFamily: 'ProximaNova-Bold',
     fontSize: 18,
     color: '#FFFFFF'
-  }
+  },
+  shadowText: {
+    color: 'white',
+    ...TextShadow
+  },
 });
