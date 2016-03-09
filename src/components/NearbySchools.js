@@ -11,8 +11,10 @@ import React, {
 } from 'react-native';
 import {GradientText} from './gradient';
 import {Button, GeneralCell, sharedStyles} from './UI';
+import Ratings from './ratings';
+import Badge from './badge';
 
-export default class SchoolsIndicator extends Component {
+export class SchoolsIndicator extends Component {
   static propTypes = {
     onExplore: PropTypes.func.isRequired
   };
@@ -97,40 +99,6 @@ export class SchoolCell extends Component {
     reviews: PropTypes.number.isRequired,
   };
 
-  renderBadge(count) {
-    let background;
-    if (count < 7) {
-      background = require('./images/badge2.png');
-    } else {
-      background = require('./images/badge.png');
-    }
-    return (
-      <Image style={styles.badgeWrapper} source={background}>
-      <Text style={[sharedStyles.buttonText, styles.badge, styles.schoolCount]}>{count}</Text>
-      </Image>
-    );
-  }
-
-  renderRating(value) {
-    if (value) {
-      return <Image source={require('./images/star.png')} />;
-    } else {
-      return <Image source={require('./images/star_empty.png')} />;
-    }
-  }
-
-  renderRatings(ratings) {
-    return (
-      <View style={styles.ratings}>
-        {this.renderRating(ratings > 0)}
-        {this.renderRating(ratings > 1)}
-        {this.renderRating(ratings > 2)}
-        {this.renderRating(ratings > 3)}
-        {this.renderRating(ratings > 4)}
-      </View>
-    );
-  }
-
   render() {
     let {name, address, distance, count, ratings, reviews, ...otherProps} = this.props;
     return (
@@ -142,8 +110,8 @@ export class SchoolCell extends Component {
         <Text style={styles.cellAddress}>{distance}</Text>
         </View>
         <View style={{flexDirection: 'column', alignSelf: 'flex-start', alignItems: 'center'}}>
-        {this.renderBadge(count)}
-        {this.renderRatings(ratings)}
+        <Badge number={count} />
+        <Ratings ratings={ratings} style={{marginTop: 9}}/>
         <Text style={styles.reviewsCount}>{reviews} reviews</Text>
         </View>
         </TouchableOpacity>
@@ -191,30 +159,16 @@ const styles = StyleSheet.create({
     right: -5,
     opacity: 1,
   },
-  badgeWrapper: {
-    justifyContent: 'center',
-  },
-  badge: {
-    fontFamily: 'ProximaNova-Semibold',
-  },
   schoolSmallCount: {
     fontSize: 12.57,
     color: '#6DFFEC',
     lineHeight: 14,
-  },
-  schoolCount: {
-    fontSize: 29.42,
-    color: 'white',
   },
   moreText: {
     fontFamily: "ProximaNova-Regular",
     fontSize: 18,
     color: '#3A4857',
     letterSpacing: 0.36,
-  },
-  ratings: {
-    flexDirection: 'row',
-    marginTop: 9,
   },
   reviewsCount: {
     paddingTop: 2,

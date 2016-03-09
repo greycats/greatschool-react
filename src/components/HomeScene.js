@@ -8,14 +8,13 @@ import React, {
   ScrollView,
 } from 'react-native';
 import {Divider, SchoolList, sharedStyles} from './UI';
-
 import Ads, {
   AdsCells,
   RecommendContent,
   RecommendContents,
 } from './ads';
-import {GradientText} from './gradient';
-import SchoolsIndicator, {
+import {
+  SchoolsIndicator,
   SchoolIcon,
   SchoolCell,
   SchoolCellMore,
