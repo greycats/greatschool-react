@@ -11,11 +11,12 @@ import React, {
 } from 'react-native';
 import {Sections} from '../components/section';
 import SchoolCell from '../components/school_cell';
-import SchoolNameView from '../components/school_overview_icon';
+import SchoolNameView from '../components/school_name_view';
 import CellGroup from '../components/cell_group';
 import Badge from '../components/badge';
 import {Row, sharedStyles} from '../components/UI';
 import Ratings from '../components/ratings';
+import SegmentedControl from '../components/segmented_control';
 
 export default class SchoolScene extends Component {
   renderTitle(name, subtitle) {
@@ -55,8 +56,11 @@ export default class SchoolScene extends Component {
   render() {
     return (
       <View style={styles.container}>
+      <View>
       <Image style={styles.slideImage} resizeMode={"contain"} source={require('../components/images/shutterstock3.jpg')} />
       <SchoolNameView name={"College Park High School"} icon={require('../components/images/school_icon.png')} />
+      <SegmentedControl style={styles.segmentedControl} options={["overview", "stats", "review"]} />
+      </View>
       <Sections style={{flex: 1}}>
       <ScrollView>
       <View style={{height: 20}} />
@@ -133,7 +137,11 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
   },
-  overviewIcon: {
-
+  segmentedControl: {
+    position: 'absolute',
+    alignItems: 'center',
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });
