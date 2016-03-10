@@ -103,7 +103,7 @@ android {
         releaseConfig {
             storeFile file("release.jks")
             storePassword "greatschool"
-            keyAlias "com.greatschool.android"
+            keyAlias "com.greatschool.react.android"
             keyPassword "greatschool"
         }
     }
