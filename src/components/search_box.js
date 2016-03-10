@@ -6,6 +6,7 @@ import React, {
   StyleSheet,
   Image,
   TextInput,
+  Platform,
 } from 'react-native';
 
 export default class SearchBox extends Component {
@@ -21,6 +22,7 @@ export default class SearchBox extends Component {
       <View style={styles.searchBoxWrapper}>
       <TextInput
       style={styles.searchBox}
+      underlineColorAndroid={"white"}
       onChangeText={(text) => this.setState({text})}
       value={this.state.text}>
       </TextInput>
@@ -33,7 +35,9 @@ export default class SearchBox extends Component {
 const styles = StyleSheet.create({
   searchBoxWrapper: {
     margin: 16,
-    overflow: 'hidden',
+    borderRadius: 4,
+    backgroundColor: "white",
+    overflow: 'hidden'
   },
   magnifier: {
     position: "absolute",
@@ -41,19 +45,13 @@ const styles = StyleSheet.create({
     left: 10,
   },
   searchBox: {
-    backgroundColor: "white",
-    borderRadius: 4,
-    overflow: 'hidden',
     height: 48,
     padding: 10,
+    paddingBottom: (Platform.OS === 'ios') ? 10 : 9,
     fontFamily: 'ProximaNova-Regular',
     fontSize: 18,
     color: '#101112',
     paddingLeft: 47,
-    backgroundColor: 'white',
-    shadowOffset: {width: 0, height: 3},
-    shadowRadius: 19,
     shadowOpacity: 0.06,
-    shadowColor: 'black',
   },
 });
