@@ -9,16 +9,16 @@ import React, {
   Image,
   TextInput,
 } from 'react-native';
-import {Sections} from './section';
-import SchoolCell from './school_cell';
-import SchoolNameView from './school_overview_icon';
+import {Sections} from '../components/section';
+import SchoolCell from '../components/school_cell';
+import SchoolNameView from '../components/school_overview_icon';
 
 export default class SchoolScene extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <Image style={styles.slideImage} resizeMode={"contain"} source={require('./images/shutterstock3.jpg')} />
-      <SchoolNameView name={"College Park High School"} icon={require('./images/school_icon.png')} />
+      <Image style={styles.slideImage} resizeMode={"contain"} source={require('../components/images/shutterstock3.jpg')} />
+      <SchoolNameView name={"College Park High School"} icon={require('../components/images/school_icon.png')} />
       <Sections style={{flex: 1}}>
       <ScrollView>
       <View style={{height: 20}} />

@@ -118,7 +118,7 @@ export class Divider extends Component {
     }
     let locations = [0, 0.25, 0.75, 1];
     return (
-      <View style={groupStyle}>
+      <View style={[groupStyle, this.props.style]}>
         <LinearGradient style={style}
           colors={['#ffffff0f', '#ffffff68', '#ffffff68', '#ffffff0f']}
           locations={locations} start={start} end={end} />

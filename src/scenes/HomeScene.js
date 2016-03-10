@@ -7,19 +7,19 @@ import React, {
   Text,
   ScrollView,
 } from 'react-native';
-import {Divider, sharedStyles, GeneralCell} from './UI';
-import {Sections, Section} from './section';
-import {CellStack} from './cell_group';
-import PageControl from './page_control';
+import {Divider, sharedStyles, GeneralCell} from '../components/UI';
+import {Sections, Section} from '../components/section';
+import {CellStack} from '../components/cell_group';
+import PageControl from '../components/page_control';
 
 import Ads, {
   AdsCells,
   RecommendedContent1,
   RecommendedContent2,
-} from './ads';
-import SchoolIcon from './school_icon';
-import SchoolCell, {SchoolCellMore} from './school_cell';
-import SchoolsIndicator from './school_indicator';
+} from '../components/ads';
+import SchoolIcon from '../components/school_icon';
+import SchoolCell, {SchoolCellMore} from '../components/school_cell';
+import SchoolsIndicator from '../components/school_indicator';
 
 export default class HomeScene extends Component {
   render() {
@@ -41,21 +41,46 @@ export default class HomeScene extends Component {
 }
 
 export class PickSchoolScene extends Component {
+  renderSchools() {
+    return (
+      <View>
+      <View style={styles.schoolIcons}>
+        <SchoolIcon name={'elementary schools'} onPress={(e) => {console.log(e);}}/>
+        <Divider vertical={true} />
+        <SchoolIcon name={'middle schools'} count={17} />
+        <Divider vertical={true} />
+        <SchoolIcon name={'high schools'} count={99} />
+      </View>
+      <Divider />
+      <View style={styles.allNearBy}>
+        <SchoolIcon name={'all nearby schools'} horizontal={true} scale={0.6} />
+      </View>
+      </View>
+    );
+  }
+
+  renderSchools2() {
+    return (
+      <View style={[styles.schoolIcons, styles.schoolIconsV]}>
+      <View style={styles.iconCol}>
+        <SchoolIcon name={'assigned schools'} style={styles.iconV1} />
+        <SchoolIcon name={'middle schools'} style={styles.iconV2} count={17} />
+      </View>
+      <Divider vertical={true} />
+      <View style={styles.iconCol}>
+        <SchoolIcon name={'elementary schools'} style={styles.iconV1} />
+        <SchoolIcon name={'high schools'} style={styles.iconV2} count={99} />
+      </View>
+      <Divider style={styles.divider} />
+      </View>
+    );
+  }
+
   renderSummary() {
     return (
       <View>
         <Text style={[sharedStyles.navText, styles.navText]}>Pick a School</Text>
-        <View style={styles.schoolIcons}>
-          <SchoolIcon name={'elementary schools'} icon={require('./images/elementary_schools.png')} onPress={(e) => {console.log(e);}}/>
-          <Divider vertical={true} />
-          <SchoolIcon name={'middle schools'} icon={require('./images/middle_schools.png')} count={17} />
-          <Divider vertical={true} />
-          <SchoolIcon name={'high schools'} icon={require('./images/high_schools.png')} count={99} />
-        </View>
-        <Divider />
-        <View style={styles.allNearBy}>
-          <SchoolIcon name={'all nearby schools'} icon={require('./images/nearby_schools.png')} horizontal={true} scale={0.6} />
-        </View>
+        {this.renderSchools2()}
       </View>
     );
   }
@@ -110,6 +135,32 @@ const styles = StyleSheet.create({
     height: 189,
     marginBottom: 29,
     flexDirection: 'row',
+    flex: 1,
+  },
+  schoolIconsV: {
+    marginTop: 27,
+    marginBottom: 49,
+    height: 189 + 95,
+  },
+  iconCol: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  iconV1: {
+    alignSelf: 'center',
+    width: 130,
+    marginBottom: 30,
+  },
+  iconV2: {
+    alignSelf: 'center',
+    width: 130,
+    marginTop: 30,
+  },
+  divider: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 160,
   },
   allNearBy: {
     flex: 1,

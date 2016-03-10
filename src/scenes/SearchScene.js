@@ -9,9 +9,9 @@ import React, {
   Image,
   TextInput,
 } from 'react-native';
-import {Sections} from './section';
-import SchoolCell from './school_cell';
-import {generateRandomSchools} from './UI';
+import {Sections} from '../components/section';
+import SchoolCell from '../components/school_cell';
+import {generateRandomSchools} from '../components/UI';
 
 export default class SearchScene extends Component {
   constructor() {
@@ -29,7 +29,7 @@ export default class SearchScene extends Component {
       onChangeText={(text) => this.setState({text})}
       value={this.state.text}>
       </TextInput>
-      <Image style={styles.magnifier} source={require('./images/magnifier.png')} />
+      <Image style={styles.magnifier} source={require('../components/images/magnifier.png')} />
       </View>
     );
   }

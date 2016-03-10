@@ -17,22 +17,34 @@ export default class SchoolIcon extends Component {
     name: PropTypes.string.isRequired,
     scale: PropTypes.number,
     horizontal: PropTypes.bool,
-    icon: PropTypes.number.isRequired,
     count: PropTypes.number,
-    ...View.propTypes
+    ...TouchableOpacity.propTypes
   };
 
+  imageForName(name) {
+    switch (name) {
+      case "elementary schools":
+      return require('./images/elementary_schools.png');
+      case "middle schools":
+      return require('./images/middle_schools.png');
+      case "high schools":
+      return require('./images/high_schools.png');
+      default:
+      return require('./images/nearby_schools.png');
+    }
+  }
+
   render() {
-    let {name, icon, count, ...otherProps} = this.props;
+    let {style, name, count, ...otherProps} = this.props;
     let size = 71 * (this.props.scale || 1);
     let schoolSize = this.props.horizontal ? {height: size, marginVertical: 5, flexDirection: 'row'} : {width: size, marginHorizontal: 5, flex: 1};
 
     let backgroundColor = `rgba(21, 82, 147, ${size < 71 ? 0.5 : 1})`;
     let avatar = {width: size, height: size, borderRadius: size / 2, backgroundColor, overflow: 'visible'};
-    let textSize = this.props.horizontal ? {marginLeft: 19} : {marginTop: 19};
+    let textSize = this.props.horizontal ? {marginLeft: 19} : {marginTop: 10};
     return (
-      <TouchableOpacity style={[styles.school, schoolSize]} {...otherProps}>
-        <Image style={avatar} source={icon}>
+      <TouchableOpacity style={[styles.school, schoolSize, style]} {...otherProps}>
+        <Image style={avatar} source={this.imageForName(name)}>
           <SmallBadge number={count} />
         </Image>
         <Text style={[sharedStyles.shadowText, sharedStyles.boldText, styles.schoolCaption, textSize]}>{name.toUpperCase()}</Text>
@@ -40,6 +52,7 @@ export default class SchoolIcon extends Component {
     );
   }
 }
+
 const styles = StyleSheet.create({
   school: {
     paddingTop: 20,

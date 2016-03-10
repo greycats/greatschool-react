@@ -4,9 +4,9 @@ import React from 'react-native';
 import {Background} from './src/components/UI';
 import TabBar from './src/components/tab';
 import Navigator from './src/components/nav';
-import HomeScene, {PickSchoolScene} from './src/components/HomeScene';
-import SearchScene from './src/components/SearchScene';
-import SchoolScene from './src/components/SchoolScene';
+import HomeScene, {PickSchoolScene} from './src/scenes/HomeScene';
+import SearchScene from './src/scenes/SearchScene';
+import SchoolScene from './src/scenes/SchoolScene';
 
 export default class GreatSchool extends React.Component {
   render() {
