@@ -98,8 +98,18 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+
+    signingConfigs {
+        releaseConfig {
+            storeFile file("release.jks")
+            storePassword "greatschool"
+            keyAlias "com.greatschool.android"
+            keyPassword "greatschool"
+        }
+    }
     buildTypes {
         release {
+            signingConfig signingConfigs.releaseConfig
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
