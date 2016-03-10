@@ -45,7 +45,7 @@ export class PickSchoolScene extends Component {
     return (
       <View>
       <View style={styles.schoolIcons}>
-        <SchoolIcon name={'assigned schools'} onPress={(e) => {}}/>
+        <SchoolIcon name={'elementary schools'} onPress={(e) => {}}/>
         <Divider vertical={true} />
         <SchoolIcon name={'middle schools'} count={17} />
         <Divider vertical={true} />
@@ -87,7 +87,7 @@ export class PickSchoolScene extends Component {
 
   renderSchoolList() {
     return (
-      <Section title={"nearby schools"}>
+      <Section title={"assigned schools"}>
       {SchoolCell.generateRandomSchools.bind(this)(3)}
       <SchoolCellMore count={7} />
       </Section>

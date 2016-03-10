@@ -1,4 +1,9 @@
-import React, { PropTypes, requireNativeComponent, processColor, Text } from 'react-native';
+import React, {
+  Image,
+  PropTypes,
+  requireNativeComponent,
+  processColor,
+} from 'react-native';
 
 // let NativeGradientLabel = requireNativeComponent('NativeGradientLabel', null);
 
@@ -15,6 +20,7 @@ export class GradientText extends React.Component {
   };
   render() {
     let { borderColor, colors, fontSize, kern, text, ...otherProps } = this.props;
-    return <Text style={{fontSize: fontSize, letterSpacing: kern, color: colors[0], borderColor: borderColor}} {...otherProps}>{text}</Text>;
+    // return <Text style={{fontSize: fontSize, letterSpacing: kern, color: colors[0], borderColor: borderColor}} {...otherProps}>{text}</Text>;
+    return <Image source={require('./images/30.png')} {...otherProps} />;
   }
 }

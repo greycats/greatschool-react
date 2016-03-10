@@ -5,6 +5,7 @@ import React, {
   View,
   StyleSheet,
   PropTypes,
+  Platform,
   Text,
 } from 'react-native';
 import {GradientText} from './gradient';
@@ -24,8 +25,8 @@ export default class SchoolsIndicator extends Component {
 
   render() {
     return (
-      <View style={{flex: 1, justifyContent: 'center'}}>
-      <GradientText style={{height: 141}} fontSize={120} kern={-2.3}
+      <View style={styles.container}>
+      <GradientText style={styles.number} fontSize={120} kern={-2.3}
         colors={['#FFFFFF', '#D8D8D8']} loc1={[0.64, 1 - 0.376]} loc2={[0.68, 1 - 0.76]}
         borderColor={'#FAE3E3'} {...TextShadow}
         text={this.state.number.toString()} />
@@ -39,5 +40,13 @@ const styles = StyleSheet.create({
   underline: {
     color: '#B8E986',
     textDecorationLine: 'underline'
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  number: {
+    height: (Platform.OS === 'ios') ? 141 : 100,
+    alignSelf: (Platform.OS === 'ios') ? null : 'center',
   }
 });

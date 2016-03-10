@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'column',
     marginTop: 20,
-    flex: 1,
   },
   navLeftIcon: {
     marginTop: 9,
@@ -121,6 +120,6 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   logo: {
-    marginTop: 20,
+    // marginTop: 20, ios only
   },
 });

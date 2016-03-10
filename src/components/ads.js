@@ -23,7 +23,7 @@ export default class Ads extends Component {
       <View style={styles.ads}>
         <View style={styles.left}>
           <Text style={styles.header}>ARTICLE</Text>
-          <Text style={[sharedStyles.shadowText, styles.body]} numberOfLines={0}>Are our screen-addicted kids frying their brains?</Text>
+          <Text style={[sharedStyles.shadowText, styles.body]}>Are our screen-addicted kids frying their brains?</Text>
           <Text style={styles.footer}>Content by: GreatKids</Text>
         </View>
         <View style={styles.right}>
