@@ -9,11 +9,9 @@ import React, {
   Image,
   Text,
 } from 'react-native';
-import {Button, GeneralCell, sharedStyles} from './UI';
+import {Button, sharedStyles, Row} from './UI';
 import LinearGradient from 'react-native-linear-gradient';
-import Actions from '../actions';
-import CellGroup, {CellStack} from './cell_group';
-import PageControl from './page_control';
+import CellGroup from './cell_group';
 
 export default class Ads extends Component {
   static propTypes = {
@@ -41,13 +39,12 @@ export default class Ads extends Component {
 export class AdsCells extends Component {
   renderAds(text, icon) {
     return (
-      <TouchableOpacity style={[sharedStyles.cellContent, styles.adsContent]}>
+      <Row weight={10} disclosure={true}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <Image source={icon} />
         <Text style={styles.adsText}>{text}</Text>
-        </View>
-        <Image source={require('./images/disclosure_button.png')} />
-      </TouchableOpacity>
+      </View>
+      </Row>
     );
   }
 
@@ -62,43 +59,27 @@ export class AdsCells extends Component {
   }
 }
 
-export class RecommendContent extends Component {
+export class RecommendedContent1 extends Component {
   render() {
-    let {children, ...otherProps} = this.props;
     return (
-      <GeneralCell {...otherProps}>
-      <TouchableOpacity style={styles.recommendContent}>
       <LinearGradient colors={['#FFFAF6', '#FFDBC5']} start={[0.37, 0.12]} end={[0.44, 1]}>
       <Image style={styles.recommendedImage} source={require('./images/shutterstock.png')} />
       <Text style={[sharedStyles.buttonText, styles.recommendedTitle]}>MILESTONE</Text>
       <Text style={[sharedStyles.buttonText, styles.recommendedText]}>Free online collection of videos aimed at helping you understand your kid’s grade-level expectations</Text>
       <Button style={styles.exploreButton} colors={['#F99913', '#F26620']} start={[0.72, 0]} end={[0.62, 1]} title={"Let’s explore"} />
-
       </LinearGradient>
-      </TouchableOpacity>
-      </GeneralCell>
     );
   }
 }
 
-export class RecommendContents extends Component {
-  static propTypes = {
-    totalPage: PropTypes.number.isRequired,
-  };
-
+export class RecommendedContent2 extends Component {
   render() {
-    let {children, totalPage, ...otherProps} = this.props;
     return (
       <View>
-      <CellStack {...otherProps}>
-      <TouchableOpacity style={styles.recommendContent}>
       <Image style={styles.recommendedImage2} source={require('./images/shutterstock2.jpg')} />
       <Text style={[sharedStyles.buttonText, styles.recommendedSubtitle]}>EASY LEARNING</Text>
       <View style={{backgroundColor: '#0DA7E3', width: 20, height: 4, alignSelf: 'center'}}/>
       <Text style={[sharedStyles.buttonText, styles.recommendedSubtitle2]}>A tasty way to teach your little ones how to wait</Text>
-      </TouchableOpacity>
-      </CellStack>
-      <PageControl id={"recomment_contents"} totalPage={totalPage} />
       </View>
     );
   }
@@ -118,16 +99,6 @@ const styles = React.StyleSheet.create({
     fontSize: 16,
     paddingLeft: 22,
     color: '#1C252E',
-  },
-  adsContent: {
-    marginTop: 12,
-    marginLeft: 14,
-    marginBottom: 12,
-    marginRight: 15,
-  },
-  recommendContent: {
-    borderRadius: 4,
-    overflow: 'hidden',
   },
   recommendedTitle: {
     color: '#F15D22',

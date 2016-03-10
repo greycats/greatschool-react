@@ -10,9 +10,9 @@ import React, {
   TextInput,
 } from 'react-native';
 import {Sections} from './section';
-import {SchoolCell} from './NearbySchools';
+import SchoolCell from './school_cell';
 import SchoolNameView from './school_overview_icon';
-//
+
 export default class SchoolScene extends Component {
   render() {
     return (

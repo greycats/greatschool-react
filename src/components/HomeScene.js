@@ -7,19 +7,19 @@ import React, {
   Text,
   ScrollView,
 } from 'react-native';
-import {Divider, sharedStyles} from './UI';
+import {Divider, sharedStyles, GeneralCell} from './UI';
 import {Sections, Section} from './section';
+import {CellStack} from './cell_group';
+import PageControl from './page_control';
+
 import Ads, {
   AdsCells,
-  RecommendContent,
-  RecommendContents,
+  RecommendedContent1,
+  RecommendedContent2,
 } from './ads';
-import {
-  SchoolsIndicator,
-  SchoolIcon,
-  SchoolCell,
-  SchoolCellMore,
-} from './NearbySchools';
+import SchoolIcon from './school_icon';
+import SchoolCell, {SchoolCellMore} from './school_cell';
+import SchoolsIndicator from './school_indicator';
 
 export default class HomeScene extends Component {
   render() {
@@ -72,8 +72,13 @@ export class PickSchoolScene extends Component {
   renderRecommendedContent() {
     return (
       <Section title={"recommended content"}>
-      <RecommendContent />
-      <RecommendContents totalPage={5} />
+      <GeneralCell onClick={(e) => {}}>
+      <RecommendedContent1 />
+      </GeneralCell>
+      <CellStack onClick={(e) => {}}>
+      <RecommendedContent2 />
+      </CellStack>
+      <PageControl id={"recomment_contents"} totalPage={5} />
       <AdsCells />
       </Section>
     );

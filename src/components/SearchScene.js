@@ -10,7 +10,7 @@ import React, {
   TextInput,
 } from 'react-native';
 import {Sections} from './section';
-import {SchoolCell} from './NearbySchools';
+import SchoolCell from './school_cell';
 import {generateRandomSchools} from './UI';
 
 export default class SearchScene extends Component {

@@ -2,10 +2,12 @@
 
 import React, {
   TouchableHighlight,
+  TouchableOpacity,
   View,
   Component,
   PropTypes,
   Text,
+  Image,
   ListView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -33,13 +35,66 @@ export class Background extends Component {
 }
 
 export class GeneralCell extends Component {
-  static propTypes = View.propTypes;
+  static propTypes = {
+    onClick: PropTypes.func,
+    ...View.propTypes
+  };
 
   render() {
-    let {style, ...otherProps} = this.props;
+    let {style, onClick, children, ...otherProps} = this.props;
+    var newChildren;
+    if (onClick) {
+      newChildren = (
+        <TouchableOpacity style={styles.cellTouch} onPress={onClick}>
+        {children}
+        </TouchableOpacity>
+      );
+    } else {
+      newChildren = children;
+    }
     return (
-      <View style={[styles.cell, style]} {...otherProps} />
+      <View style={[styles.cell, style]} {...otherProps}>
+      {newChildren}
+      </View>
     )
+  }
+}
+
+export class Row extends Component {
+  static propTypes = {
+    onClick: PropTypes.func,
+    weight: PropTypes.number,
+    ...View.propTypes
+  };
+
+  render() {
+    var {children, weight, disclosure, onClick, ...otherProps} = this.props;
+    if (disclosure) {
+      let image = (
+        <Image key={'disclosure'} source={require('./images/disclosure_button.png')} />
+      );
+      let count = React.Children.count(children);
+      if (count == 1) {
+        children = [children, image];
+      } else {
+        children.splice(count - 1, 0, image);
+      }
+    }
+    let margins;
+    if (weight >= 25) {
+      margins = {marginTop: 20, marginLeft: 28, marginBottom: 20, marginRight: 18}
+    } else if (weight >= 20) {
+      margins = {marginTop: 20, marginLeft: 20, marginBottom: 20, marginRight: disclosure ? 14 : 34}
+    } else if (weight >= 15) {
+      margins = {marginTop: 16, marginLeft: 28, marginBottom: 16, marginRight: 14}
+    } else if (weight >= 10) {
+      margins = {marginTop: 12, marginLeft: 15, marginBottom: 12, marginRight: 14}
+    }
+    return (
+      <TouchableOpacity style={[sharedStyles.cellContent, margins]} {...otherProps} onPress={onClick}>
+      {children}
+      </TouchableOpacity>
+    );
   }
 }
 
@@ -137,6 +192,10 @@ const styles = React.StyleSheet.create({
     color: 'white',
     letterSpacing: 1.07,
   },
+  cellTouch: {
+    borderRadius: 4,
+    overflow: 'hidden',
+  },
 });
 
 export const TextShadow = {
@@ -151,7 +210,7 @@ export const sharedStyles = React.StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     flexDirection: 'row',
-    marginLeft: 28,
+    margin: 15,
     alignItems: 'center',
   },
   buttonText: {
@@ -169,5 +228,11 @@ export const sharedStyles = React.StyleSheet.create({
   shadowText: {
     color: 'white',
     ...TextShadow
+  },
+  boldText: {
+    fontFamily: 'ProximaNova-Bold',
+    fontSize: 13,
+    textAlign: 'center',
+    letterSpacing: 0.93,
   },
 });
