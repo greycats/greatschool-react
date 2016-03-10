@@ -7,6 +7,7 @@ import React, {
   Image,
   View,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import TabStore from '../stores/TabStore';
 import {sharedStyles} from './UI';
@@ -107,16 +108,16 @@ const NavigationBarRouteMapper = {
 
 const styles = StyleSheet.create({
   navTitle: {
+    flex: 1,
     justifyContent: 'center',
-    flexDirection: 'column',
     marginTop: 20,
   },
   navLeftIcon: {
-    marginTop: 9,
+    marginTop: (Platform.OS == 'ios') ? 9 : 16,
     marginLeft: 5,
   },
   navRightIcon: {
-    marginTop: 9,
+    marginTop: (Platform.OS == 'ios') ? 9 : 16,
     marginRight: 5,
   },
   logo: {
