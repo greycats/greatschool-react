@@ -47,7 +47,7 @@ const styles = React.StyleSheet.create({
     margin: 10,
   },
   name: {
-    paddingHorizontal: 50,
+    marginHorizontal: 50,
     fontSize: 20,
     lineHeight: 36,
     color: 'white',

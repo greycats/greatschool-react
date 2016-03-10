@@ -97,7 +97,7 @@ const styles = React.StyleSheet.create({
   adsText: {
     fontFamily: "ProximaNova-Regular",
     fontSize: 16,
-    paddingLeft: 22,
+    marginLeft: 22,
     color: '#1C252E',
   },
   recommendedTitle: {
@@ -105,15 +105,15 @@ const styles = React.StyleSheet.create({
     backgroundColor: 'transparent',
     textAlign: 'center',
     fontSize: 45,
-    paddingTop: 13,
+    marginTop: 13,
   },
   recommendedSubtitle: {
-    paddingTop: 25,
+    marginTop: 25,
     fontFamily: 'ProximaNova-Semibold',
     fontSize: 12,
     color: '#585859',
     letterSpacing: 0.67,
-    paddingBottom: 13,
+    marginBottom: 13,
   },
   recommendedText: {
     fontFamily: 'ProximaNova-Regular',
@@ -122,14 +122,14 @@ const styles = React.StyleSheet.create({
     letterSpacing: 0.28,
     lineHeight: 16,
     marginTop: 0,
-    paddingHorizontal: 50,
-    paddingBottom: 16,
+    marginHorizontal: 50,
+    marginBottom: 16,
   },
   recommendedSubtitle2: {
-    paddingHorizontal: 50,
+    marginHorizontal: 50,
     lineHeight: 25,
-    paddingTop: 10,
-    paddingBottom: 37,
+    marginTop: 10,
+    marginBottom: 37,
   },
   recommendedImage: {
     position: 'absolute',

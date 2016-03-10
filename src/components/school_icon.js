@@ -7,6 +7,7 @@ import React, {
   PropTypes,
   Text,
   TouchableOpacity,
+  Platform,
   Image,
 } from 'react-native';
 import {sharedStyles} from './UI';
@@ -40,13 +41,14 @@ export default class SchoolIcon extends Component {
     let schoolSize = this.props.horizontal ? {height: size, marginVertical: 5, flexDirection: 'row'} : {width: size, marginHorizontal: 5, flex: 1};
 
     let backgroundColor = `rgba(21, 82, 147, ${size < 71 ? 0.5 : 1})`;
-    let avatar = {width: size, height: size, borderRadius: size / 2, backgroundColor, overflow: 'visible'};
+    let avatar = {width: size, height: size, borderRadius: size / 2, backgroundColor};
     let textSize = this.props.horizontal ? {marginLeft: 19} : {marginTop: 10};
     return (
       <TouchableOpacity style={[styles.school, schoolSize, style]} {...otherProps}>
-        <Image style={avatar} source={this.imageForName(name)}>
-          <SmallBadge number={count} />
-        </Image>
+        <View style={avatar}>
+        <Image source={this.imageForName(name)} />
+        </View>
+        <SmallBadge style={styles.badge} number={count} />
         <Text style={[sharedStyles.shadowText, sharedStyles.boldText, styles.schoolCaption, textSize]}>{name.toUpperCase()}</Text>
       </TouchableOpacity>
     );
@@ -56,8 +58,9 @@ export default class SchoolIcon extends Component {
 const styles = StyleSheet.create({
   school: {
     paddingTop: 20,
+    marginBottom: (Platform.OS == 'android') ? -40 : 0,
     alignItems: 'center',
-    alignSelf: 'flex-start',
+    overflow: 'visible',
   },
   schoolCaption: {
     fontSize: 12,
@@ -65,4 +68,8 @@ const styles = StyleSheet.create({
     letterSpacing: 0.86,
     lineHeight: 19,
   },
+  badge: {
+    right: 25,
+    top: 20,
+  }
 });
