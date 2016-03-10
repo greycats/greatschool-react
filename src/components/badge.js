@@ -10,7 +10,7 @@ export default class Badge extends Component {
   };
 
   render() {
-    let {number, threshold, ...otherProps} = this.props;
+    let {number, style, threshold, ...otherProps} = this.props;
     threshold = threshold || 5;
     let background;
     if (number <= threshold) {
@@ -19,7 +19,7 @@ export default class Badge extends Component {
       background = require('./images/badge.png');
     }
     return (
-      <Image style={styles.wrapper} source={background}>
+      <Image style={[styles.wrapper, style]} source={background}>
       <Text style={[sharedStyles.buttonText, styles.badge]}>{number}</Text>
       </Image>
     );

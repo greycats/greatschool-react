@@ -79,7 +79,7 @@ export class RecommendedContent2 extends Component {
       <Image style={styles.recommendedImage2} source={require('./images/shutterstock2.jpg')} />
       <Text style={[sharedStyles.buttonText, styles.recommendedSubtitle]}>EASY LEARNING</Text>
       <View style={{backgroundColor: '#0DA7E3', width: 20, height: 4, alignSelf: 'center'}}/>
-      <Text style={[sharedStyles.buttonText, styles.recommendedSubtitle2]}>A tasty way to teach your little ones how to wait</Text>
+      <Text style={[sharedStyles.buttonText, sharedStyles.cellTitleText, styles.recommendedSubtitle2]}>A tasty way to teach your little ones how to wait</Text>
       </View>
     );
   }
@@ -126,9 +126,6 @@ const styles = React.StyleSheet.create({
     paddingBottom: 16,
   },
   recommendedSubtitle2: {
-    color: '#1C252E',
-    fontFamily: 'ProximaNova-Semibold',
-    fontSize: 20,
     paddingHorizontal: 50,
     lineHeight: 25,
     paddingTop: 10,

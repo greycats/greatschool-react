@@ -6,25 +6,29 @@ import {sharedStyles} from './UI';
 export default class Ratings extends React.Component {
   static propTypes = {
     ratings: React.PropTypes.number.isRequired,
+    threshold: React.PropTypes.number,
   };
 
   renderRating(value) {
-    if (value) {
-      return <Image source={require('./images/star.png')} />;
+    let threshold = this.props.threshold || 3;
+    let ratings = this.props.ratings;
+    if (ratings > value) {
+      if (threshold < ratings) {
+        return <Image key={value} source={require('./images/star.png')} />;
+      } else {
+        return <Image key={value} source={require('./images/star2.png')} />;
+      }
     } else {
-      return <Image source={require('./images/star_empty.png')} />;
+      return <Image key={value} source={require('./images/star_empty.png')} />;
     }
   }
 
   render() {
     let {ratings, style, ...otherProps} = this.props;
+
     return (
       <View {...otherProps} style={[style, {flexDirection: 'row'}]}>
-      {this.renderRating(ratings > 0)}
-      {this.renderRating(ratings > 1)}
-      {this.renderRating(ratings > 2)}
-      {this.renderRating(ratings > 3)}
-      {this.renderRating(ratings > 4)}
+      {[0,1,2,3,4].map(this.renderRating.bind(this))}
       </View>
     );
   }

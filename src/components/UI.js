@@ -71,13 +71,13 @@ export class Row extends Component {
     var {children, weight, disclosure, onClick, ...otherProps} = this.props;
     if (disclosure) {
       let image = (
-        <Image key={'disclosure'} source={require('./images/disclosure_button.png')} />
+        <Image style={{alignSelf: 'center', marginLeft: 12}} key={'disclosure'} source={require('./images/disclosure_button.png')} />
       );
       let count = React.Children.count(children);
       if (count == 1) {
         children = [children, image];
       } else {
-        children.splice(count - 1, 0, image);
+        children = [children[0], (<View key={'fixed'} style={{flexDirection: 'row'}}>{children[1]}{image}</View>)]
       }
     }
     let margins;
@@ -235,4 +235,9 @@ export const sharedStyles = React.StyleSheet.create({
     textAlign: 'center',
     letterSpacing: 0.93,
   },
+  cellTitleText: {
+    color: '#1C252E',
+    fontFamily: 'ProximaNova-Semibold',
+    fontSize: 20,
+  }
 });
