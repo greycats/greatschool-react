@@ -45,7 +45,7 @@ export class PickSchoolScene extends Component {
     return (
       <View>
       <View style={styles.schoolIcons}>
-        <SchoolIcon name={'elementary schools'} onPress={(e) => {console.log(e);}}/>
+        <SchoolIcon name={'elementary schools'} onPress={(e) => {}}/>
         <Divider vertical={true} />
         <SchoolIcon name={'middle schools'} count={17} />
         <Divider vertical={true} />

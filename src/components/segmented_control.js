@@ -41,7 +41,7 @@ export default class SegmentedControl extends Component {
 
   onSelect(id) {
     this.setSelected(id);
-    if (this.props.onSelect) this.props.onSelect(i);
+    if (this.props.onSelect) this.props.onSelect(id);
   }
 
   setSelected(id) {

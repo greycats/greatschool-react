@@ -53,13 +53,21 @@ export default class SchoolScene extends Component {
     )
   }
 
+  switchTab(tab) {
+    // console.log("switchTab", tab);
+  }
+
   render() {
     return (
       <View style={styles.container}>
       <View>
       <Image style={styles.slideImage} resizeMode={"contain"} source={require('../components/images/shutterstock3.jpg')} />
       <SchoolNameView name={"College Park High School"} icon={require('../components/images/school_icon.png')} />
-      <SegmentedControl ref={c => this._segmented = c} style={styles.segmentedControl} options={["overview", "stats", "review"]} />
+      <SegmentedControl
+        options={["overview", "stats", "review"]}
+        ref={c => {this._segmented = c; c.setSelected(0);}}
+        style={styles.segmentedControl}
+        onSelect={this.switchTab.bind(this)} />
       </View>
       <Sections style={{flex: 1}}>
       <ScrollView>
