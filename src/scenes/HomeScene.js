@@ -32,7 +32,7 @@ export default class HomeScene extends Component {
         <View>
           <Divider />
           <Ads onClick={() => {
-            Linking.openURL('http://www.greatschools.org/gk/articles/how-to-teach-shapes-and-spatial-skills-to-your-preschooler/')
+            // Linking.openURL('http://www.greatschools.org/gk/articles/how-to-teach-shapes-and-spatial-skills-to-your-preschooler/')
           }} />
         </View>
       </View>
@@ -45,7 +45,7 @@ export class PickSchoolScene extends Component {
     return (
       <View>
       <View style={styles.schoolIcons}>
-        <SchoolIcon name={'elementary schools'} onPress={(e) => {}}/>
+        <SchoolIcon name={'assigned schools'} onPress={(e) => {}}/>
         <Divider vertical={true} />
         <SchoolIcon name={'middle schools'} count={17} />
         <Divider vertical={true} />
