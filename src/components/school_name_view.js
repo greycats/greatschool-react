@@ -52,6 +52,7 @@ const styles = React.StyleSheet.create({
     lineHeight: 36,
     color: 'white',
     shadowColor: "black",
+    textAlign: 'center',
     shadowOffset: {width: 0, height: 2},
     shadowRadius: 19,
     shadowOpacity: 0.22,
