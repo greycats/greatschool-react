@@ -56,7 +56,7 @@ export default class SchoolCell extends Component {
     return (
       <GeneralCell {...otherProps}>
         <Row weight={25} onClick={this.props.onSelect.bind(this)}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{flexDirection: 'column', flex: 1}}>
             <Text style={styles.cellTitle}>{name}</Text>
             <Text style={styles.cellAddress}>{address}</Text>
             <Text style={styles.cellAddress}>{distance}</Text>

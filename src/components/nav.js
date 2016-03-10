@@ -45,10 +45,20 @@ export default class Navigator extends Component {
           break;
       }
     };
+    // if (this.props.tabbar) {
+    //   let tabbar = this.props.tabbar();
+    //   if (tabbar && route.name == "school") {
+    //     console.log(tabbar.setNativeProps);
+    //     if (tabbar.setNativeProps) {
+    //       tabbar.setNativeProps({style: {opacity: 0}});
+    //     }
+    //   }
+    // }
     let scene = this.props.map[route.name];
     if (scene) {
         return React.cloneElement(scene, {navigator, style: styles.container});
     }
+
   }
 
   render() {

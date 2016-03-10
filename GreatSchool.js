@@ -22,8 +22,8 @@ export default class GreatSchool extends React.Component {
     };
     return (
       <Background type="home-step1">
-        <Navigator map={route} />
-        <TabBar />
+        <Navigator map={route} tabbar={() => {return this._tabbar}} />
+        <TabBar ref={c => this._tabbar = c.__ref} />
       </Background>
     );
   }
