@@ -6,6 +6,7 @@ import React, {
   StyleSheet,
   Text,
   ScrollView,
+  Linking,
 } from 'react-native';
 import {Divider, sharedStyles, GeneralCell} from '../components/UI';
 import {Sections, Section} from '../components/section';
@@ -31,8 +32,7 @@ export default class HomeScene extends Component {
         <View>
           <Divider />
           <Ads onClick={() => {
-            this.props.navigator.push({name: 'ads', title: 'Ads'});
-            //TODO
+            Linking.openURL('http://www.greatschools.org/gk/articles/how-to-teach-shapes-and-spatial-skills-to-your-preschooler/')
           }} />
         </View>
       </View>
