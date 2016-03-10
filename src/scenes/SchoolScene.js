@@ -59,7 +59,7 @@ export default class SchoolScene extends Component {
       <View>
       <Image style={styles.slideImage} resizeMode={"contain"} source={require('../components/images/shutterstock3.jpg')} />
       <SchoolNameView name={"College Park High School"} icon={require('../components/images/school_icon.png')} />
-      <SegmentedControl style={styles.segmentedControl} options={["overview", "stats", "review"]} />
+      <SegmentedControl ref={c => this._segmented = c} style={styles.segmentedControl} options={["overview", "stats", "review"]} />
       </View>
       <Sections style={{flex: 1}}>
       <ScrollView>
