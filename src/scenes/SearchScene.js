@@ -12,32 +12,14 @@ import React, {
 import {Sections} from '../components/section';
 import SchoolCell from '../components/school_cell';
 import {generateRandomSchools} from '../components/UI';
+import SearchBox from '../components/search_box';
 
 export default class SearchScene extends Component {
-  constructor() {
-    super()
-    this.state = {
-      text: ''
-    }
-  }
-
-  renderSearchBox() {
-    return (
-      <View style={styles.searchBoxWrapper}>
-      <TextInput
-      style={styles.searchBox}
-      onChangeText={(text) => this.setState({text})}
-      value={this.state.text}>
-      </TextInput>
-      <Image style={styles.magnifier} source={require('../components/images/magnifier.png')} />
-      </View>
-    );
-  }
 
   render() {
     return (
       <View style={styles.container}>
-      {this.renderSearchBox()}
+      <SearchBox />
       <Sections style={{flex: 1}}>
       <ScrollView>
       <View style={{height: 20}} />
@@ -53,23 +35,5 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 70,
     flex: 1,
-  },
-  searchBoxWrapper: {
-    margin: 16,
-  },
-  magnifier: {
-    position: "absolute",
-    top: 13,
-    left: 10,
-  },
-  searchBox: {
-    backgroundColor: "white",
-    borderRadius: 4,
-    height: 48,
-    padding: 10,
-    fontFamily: 'ProximaNova-Regular',
-    fontSize: 18,
-    color: '#101112',
-    paddingLeft: 47,
-  },
+  }
 });
