@@ -149,6 +149,16 @@ export default class SchoolScene extends Component {
     );
   }
 
+  renderSegmented() {
+    return (
+      <SegmentedControl
+        options={["overview", "stats", "review"]}
+        ref={c => {this._segmented = c; if (c) {c.setSelected(0); console.log(c);}}}
+        style={styles.segmentedControl}
+        onSelect={this.switchTab.bind(this)} />
+    );
+  }
+
   render() {
     this._tabs = Array.from({length: 3});
     return (
@@ -156,11 +166,7 @@ export default class SchoolScene extends Component {
       <View>
       <Image style={styles.slideImage} resizeMode={"contain"} source={require('../components/images/shutterstock3.jpg')} />
       <SchoolNameView name={"College Park High School"} icon={require('../components/images/school_icon.png')} />
-      <SegmentedControl
-        options={["overview", "stats", "review"]}
-        ref={c => {this._segmented = c; c.setSelected(0);}}
-        style={styles.segmentedControl}
-        onSelect={this.switchTab.bind(this)} />
+      {this.renderSegmented()}
       </View>
       <Sections style={{flex: 1}} ref={c => this._sections = c}>
       {this.tab1()}

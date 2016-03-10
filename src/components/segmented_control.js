@@ -46,7 +46,7 @@ export default class SegmentedControl extends Component {
 
   setSelected(id) {
     this._items.forEach((item, i) => {
-      item.setSelected(id == i);
+      if (item) item.setSelected(id == i);
     });
   }
 
