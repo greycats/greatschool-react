@@ -14,9 +14,9 @@ export default class Ratings extends React.Component {
     let ratings = this.props.ratings;
     if (ratings > value) {
       if (threshold < ratings) {
-        return <Image key={value} source={require('./images/star.png')} />;
+        return <Image key={`star1.${value}`} source={require('./images/star.png')} />;
       } else {
-        return <Image key={value} source={require('./images/star2.png')} />;
+        return <Image key={`star2.${value}`} source={require('./images/star2.png')} />;
       }
     } else {
       return <Image key={value} source={require('./images/star_empty.png')} />;
