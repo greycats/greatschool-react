@@ -154,12 +154,12 @@ const styles = StyleSheet.create({
   },
   iconV1: {
     alignSelf: 'center',
-    width: 130,
+    width: 118,
     marginBottom: 30,
   },
   iconV2: {
     alignSelf: 'center',
-    width: 130,
+    width: 118,
     marginTop: 30,
   },
   divider: {

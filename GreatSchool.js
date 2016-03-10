@@ -7,6 +7,8 @@ import Navigator from './src/components/nav';
 import HomeScene, {PickSchoolScene} from './src/scenes/HomeScene';
 import SearchScene from './src/scenes/SearchScene';
 import SchoolScene from './src/scenes/SchoolScene';
+import MySchoolsScene from './src/scenes/MySchoolsScene';
+import GreatKidsScene from './src/scenes/GreatKidsScene';
 
 export default class GreatSchool extends React.Component {
   render() {
@@ -14,7 +16,9 @@ export default class GreatSchool extends React.Component {
       'home-step1': <HomeScene />,
       'home-step2': <PickSchoolScene />,
       'search': <SearchScene />,
-      'school': <SchoolScene />
+      'school': <SchoolScene />,
+      'kids': <GreatKidsScene />,
+      'schools': <MySchoolsScene />
     };
     return (
       <Background type="home-step1">

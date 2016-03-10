@@ -35,6 +35,12 @@ export default class Navigator extends Component {
         case 1:
           navigator.resetTo({name: 'search', title: 'Search', index: 0});
           break;
+        case 2:
+          navigator.resetTo({name: 'schools', title: 'My Schools', index: 0});
+          break;
+        case 3:
+          navigator.resetTo({name: 'kids', title: 'GreatKids', index: 0});
+          break;
         default:
           break;
       }
