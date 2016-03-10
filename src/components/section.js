@@ -4,13 +4,13 @@ import React, {Component, View, Text} from 'react-native';
 
 export class Sections extends Component {
   render() {
-    let {style, ...otherProps} = this.props;
+    let {style, children, ...otherProps} = this.props;
     return (
-      <View style={[styles.container, style]}>
+      <View style={[styles.container, style]} {...otherProps}>
         <View style={styles.shadowWrapper}>
           <View style={styles.shadow} />
         </View>
-        {this.props.children}
+        {children}
       </View>
     );
   }

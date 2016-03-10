@@ -9,14 +9,15 @@ import React, {
   Image,
   TextInput,
 } from 'react-native';
-import {Sections} from '../components/section';
+import {Sections, Section} from '../components/section';
 import SchoolCell from '../components/school_cell';
 import SchoolNameView from '../components/school_name_view';
-import CellGroup from '../components/cell_group';
+import CellGroup, {CellStack} from '../components/cell_group';
 import Badge from '../components/badge';
-import {Row, sharedStyles} from '../components/UI';
+import {Row, GeneralCell, sharedStyles} from '../components/UI';
 import Ratings from '../components/ratings';
 import SegmentedControl from '../components/segmented_control';
+import PageControl from '../components/page_control';
 
 export default class SchoolScene extends Component {
   renderTitle(name, subtitle) {
@@ -53,24 +54,12 @@ export default class SchoolScene extends Component {
     )
   }
 
-  switchTab(tab) {
-    // console.log("switchTab", tab);
+  switchTab(index) {
   }
 
-  render() {
+  tab1() {
     return (
-      <View style={styles.container}>
-      <View>
-      <Image style={styles.slideImage} resizeMode={"contain"} source={require('../components/images/shutterstock3.jpg')} />
-      <SchoolNameView name={"College Park High School"} icon={require('../components/images/school_icon.png')} />
-      <SegmentedControl
-        options={["overview", "stats", "review"]}
-        ref={c => {this._segmented = c; c.setSelected(0);}}
-        style={styles.segmentedControl}
-        onSelect={this.switchTab.bind(this)} />
-      </View>
-      <Sections style={{flex: 1}}>
-      <ScrollView>
+      <ScrollView style={styles.tabs}>
       <View style={{height: 20}} />
       <CellGroup>
       <Row weight={20} disclosure={true} onClick={(e) => {}}>
@@ -98,6 +87,83 @@ export default class SchoolScene extends Component {
       </Row>
       </CellGroup>
       </ScrollView>
+    );
+  }
+
+  tab2() {
+    return (
+      <ScrollView style={styles.tabs}>
+      <Section title={"detail overview"}>
+      <CellGroup>
+      <Row weight={20} onClick={(e) => {}}>
+      {this.renderTitle("Art & Music")}
+      {this.renderValue("3")}
+      </Row>
+      <Row weight={20} onClick={(e) => {}}>
+      {this.renderTitle("Chess")}
+      {this.renderValue("-")}
+      </Row>
+      <Row weight={20} onClick={(e) => {}}>
+      {this.renderTitle("Sports")}
+      {this.renderValue("12")}
+      </Row>
+      <Row weight={20} onClick={(e) => {}}>
+      {this.renderTitle("World Languages")}
+      {this.renderValue("-")}
+      </Row>
+      </CellGroup>
+      </Section>
+      <Section title={"test scores"}>
+      <CellStack>
+      <View>
+      </View>
+      </CellStack>
+      </Section>
+      <Section title={"homes in the school distance"}>
+      <CellStack>
+      <View>
+      </View>
+      </CellStack>
+      <PageControl totalPage={6} />
+      </Section>
+      <Section title={"discription"}>
+      <GeneralCell>
+      <Text>
+      In 2014-2015 California used the California Standard Tests (CSTs) to test students in science in grades 5,8 and 10,. The CSTs are standards-based tests, which means they measure how well students are mastering specific skills defined for each grade...
+      <Text style={styles.hyperlink}>More</Text>
+      </Text>
+      </GeneralCell>
+      </Section>
+      </ScrollView>
+    );
+  }
+
+  tab3() {
+    return (
+      <ScrollView style={styles.tabs}>
+      <Section title={"total review"}>
+      <GeneralCell>
+      </GeneralCell>
+      </Section>
+      </ScrollView>
+    );
+  }
+
+  render() {
+    this._tabs = Array.from({length: 3});
+    return (
+      <View style={styles.container}>
+      <View>
+      <Image style={styles.slideImage} resizeMode={"contain"} source={require('../components/images/shutterstock3.jpg')} />
+      <SchoolNameView name={"College Park High School"} icon={require('../components/images/school_icon.png')} />
+      <SegmentedControl
+        options={["overview", "stats", "review"]}
+        ref={c => {this._segmented = c; c.setSelected(0);}}
+        style={styles.segmentedControl}
+        onSelect={this.switchTab.bind(this)} />
+      </View>
+      <Sections style={{flex: 1}} ref={c => this._sections = c}>
+      {this.tab1()}
       </Sections>
       </View>
     );
@@ -150,6 +216,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     left: 0,
     right: 0,
+    opacity: 0,
     bottom: 0,
   },
+  tabs: {
+    flex: 1,
+  }
 });
