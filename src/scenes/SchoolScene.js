@@ -55,10 +55,10 @@ export default class SchoolScene extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <ScrollView>
       <Image style={styles.slideImage} resizeMode={"contain"} source={require('../components/images/shutterstock3.jpg')} />
       <SchoolNameView name={"College Park High School"} icon={require('../components/images/school_icon.png')} />
       <Sections style={{flex: 1}}>
+      <ScrollView>
       <View style={{height: 20}} />
       <CellGroup>
       <Row weight={20} disclosure={true} onClick={(e) => {}}>
@@ -81,16 +81,12 @@ export default class SchoolScene extends Component {
       {this.renderValue(true)}
       </Row>
       <Row weight={20} onClick={(e) => {}}>
-      {this.renderTitle("Before Care")}
-      {this.renderValue(true)}
-      </Row>
-      <Row weight={20} onClick={(e) => {}}>
       {this.renderTitle("After Care")}
       {this.renderValue(false)}
       </Row>
       </CellGroup>
-      </Sections>
       </ScrollView>
+      </Sections>
       </View>
     );
   }
