@@ -26,7 +26,7 @@ export default class SearchBox extends Component {
       onChangeText={(text) => this.setState({text})}
       value={this.state.text}>
       </TextInput>
-      <Image style={styles.magnifier} source={require('../components/images/magnifier.png')} />
+      <Image style={styles.magnifier} source={require('./images/magnifier.png')} />
       </View>
     );
   }

@@ -92,17 +92,13 @@ const NavigationBarRouteMapper = {
   },
 
   Title: (route, navigator, index, navState) => {
-    var title;
     if (route.title != null) {
-      title = <Text style={sharedStyles.navText}>{route.title}</Text>;
-    } else if (route.index == 0) {
-      title = <Image style={styles.logo} source={require('./images/logo.png')} />;
+      return (
+        <View style={styles.navTitle}>
+        <Text style={sharedStyles.navText}>{route.title}</Text>
+        </View>
+      );
     }
-    return (
-      <View style={styles.navTitle}>
-        {title}
-      </View>
-    );
   }
 };
 

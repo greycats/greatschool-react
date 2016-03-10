@@ -7,6 +7,7 @@ import React, {
   Text,
   ScrollView,
   Linking,
+  Image,
 } from 'react-native';
 import {Divider, sharedStyles, GeneralCell} from '../components/UI';
 import {Sections, Section} from '../components/section';
@@ -26,6 +27,7 @@ export default class HomeScene extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Image style={styles.logo} source={require('../components/images/logo.png')} />
         <SchoolsIndicator onExplore={() => {
           this.props.navigator.push({name: 'home-step2', index: 1});
         }} />
@@ -141,6 +143,10 @@ const styles = StyleSheet.create({
     marginTop: 27,
     marginBottom: 49,
     height: 189 + 95,
+  },
+  logo: {
+    alignSelf: 'center',
+    marginTop: 45,
   },
   iconCol: {
     flex: 1,
