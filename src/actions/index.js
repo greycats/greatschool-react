@@ -1,10 +1,12 @@
+// @flow
+
 import alt from '../alt'
 
 export class Actions {
-  switchTab(tab) {
+  switchTab(tab: number): number {
     return tab;
   }
-  switchPageControl(id, page) {
+  switchPageControl(id: number, page: number): any {
     return {id, page};
   }
   exploreSchoolsIndicator() {

@@ -9,18 +9,16 @@
 
 # Ugh
 .*/node_modules/babel.*
+.*/node_modules/flux.*
+.*/node_modules/react-native-linear-gradient.*
+.*/node_modules/react-native.*
 .*/node_modules/babylon.*
 .*/node_modules/invariant.*
+.*/node_modules/y18n.*
 
 # Ignore react and fbjs where there are overlaps, but don't ignore
 # anything that react-native relies on
-.*/node_modules/fbjs/lib/Map.js
-.*/node_modules/fbjs/lib/Promise.js
-.*/node_modules/fbjs/lib/fetch.js
-.*/node_modules/fbjs/lib/ExecutionEnvironment.js
-.*/node_modules/fbjs/lib/isEmpty.js
-.*/node_modules/fbjs/lib/crc32.js
-.*/node_modules/fbjs/lib/ErrorUtils.js
+.*/node_modules/fbjs.*
 
 # Flow has a built-in definition for the 'react' module which we prefer to use
 # over the currently-untyped source
@@ -62,4 +60,4 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowIssue\\((\\(>=0\\.\\(2[0-1]\\|1[0-9]\\|[0-9
 suppress_comment=\\(.\\|\n\\)*\\$FlowFixedInNextDeploy
 
 [version]
-0.21.0
+0.22.1
