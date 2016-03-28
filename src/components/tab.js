@@ -12,6 +12,7 @@ import React, {
 import TabStore from '../stores/TabStore';
 import Actions from '../actions';
 import connectToStores from 'alt-utils/lib/connectToStores';
+import {shadows} from './UI';
 
 class TabBarItem extends Component {
   static getStores() {
@@ -54,7 +55,7 @@ export default class TabBar extends Component {
   static propTypes = View.propTypes;
   render() {
     return (
-      <View style={styles.tabbar} ref={el => this.__ref = el}>
+      <View style={[shadows.box, styles.tabbar]} ref={el => this.__ref = el}>
       <TabBarItem icon={require('./images/nearby.png')} name={'Nearby'} key={0} id={0} />
       <TabBarItem icon={require('./images/search.png')} name={'Search'} key={1} id={1} />
       <TabBarItem icon={require('./images/my_schools.png')} name={'My Schools'} key={2} id={2} />
@@ -68,10 +69,6 @@ const styles = StyleSheet.create({
   tabbar: {
     flexDirection: 'row',
     height: 66,
-    shadowColor: 'black',
-    shadowOpacity: 0.14,
-    shadowRadius: 16,
-    shadowOffset: {width: 0, height: 2},
     backgroundColor: 'white',
   },
   tabbarItem: {

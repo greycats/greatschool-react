@@ -9,7 +9,7 @@ import React, {
   Text,
 } from 'react-native';
 import {GradientText} from './gradient';
-import {Button, sharedStyles, TextShadow} from './UI';
+import {Button, sharedStyles, shadows, Shadow} from './UI';
 
 export default class SchoolsIndicator extends Component {
   static propTypes = {
@@ -28,9 +28,9 @@ export default class SchoolsIndicator extends Component {
       <View style={styles.container}>
       <GradientText style={styles.number} fontSize={120} kern={-2.3}
         colors={['#FFFFFF', '#D8D8D8']} loc1={[0.64, 1 - 0.376]} loc2={[0.68, 1 - 0.76]}
-        borderColor={'#FAE3E3'} {...TextShadow}
+        borderColor={'#FAE3E3'} {...Shadow.text}
         text={this.state.number.toString()} />
-      <Text style={[sharedStyles.shadowText, sharedStyles.boldText, {marginBottom: 30}]}>SCHOOLS IN THIS <Text style={styles.underline}>NEIGHBORHOOD</Text></Text>
+      <Text style={[shadows.text, sharedStyles.boldText, {marginBottom: 30}]}>SCHOOLS IN THIS <Text style={styles.underline}>NEIGHBORHOOD</Text></Text>
       <Button title="Let's explore" onClick={this.props.onExplore} />
       </View>
     );

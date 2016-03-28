@@ -8,7 +8,6 @@ import React, {
   PropTypes,
   Text,
   Image,
-  ListView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -53,7 +52,7 @@ export class GeneralCell extends Component {
       newChildren = children;
     }
     return (
-      <View style={[styles.cell, style]} {...otherProps}>
+      <View style={[shadows.cell, styles.cell, style]} {...otherProps}>
       {newChildren}
       </View>
     )
@@ -151,7 +150,7 @@ export class Button extends Component {
     return (
       <TouchableHighlight style={[style, {alignSelf: 'center'}]} onPress={onClick} underlayColor={'transparent'}>
         <View>
-          <LinearGradient style={styles.button}
+          <LinearGradient style={[shadows.button, styles.button]}
             colors={colors} {...otherProps}>
             <Text style={styles.buttonText}>{title}</Text>
           </LinearGradient>
@@ -161,6 +160,20 @@ export class Button extends Component {
   }
 }
 
+export class Shadow {
+  constructor(shadowColor, shadowOpacity, shadowOffset = {width: 0, height: 0}, shadowRadius) {
+    Object.assign(this, {shadowColor, shadowOpacity, shadowOffset, shadowRadius});
+  }
+  static text = new Shadow('#004188', 0.22, {height: 5}, 6);
+  static text2 = new Shadow('black', 0.22, {height: 2}, 19);
+  static text3 = new Shadow('black', 0.2, {height: 2}, 16);
+  static box = new Shadow('black', 0.14, {height: 2}, 16);
+  static cell = new Shadow('black', 0.06, {height: 3}, 19);
+  static button = new Shadow('#101112', 0.15, {height: 7}, 11);
+}
+
+export const shadows = React.StyleSheet.create(Shadow);
+
 const styles = React.StyleSheet.create({
   cell: {
     marginLeft: 17,
@@ -168,22 +181,14 @@ const styles = React.StyleSheet.create({
     marginBottom: 14,
     borderRadius: 4,
     backgroundColor: 'white',
-    shadowOffset: {width: 0, height: 3},
-    shadowRadius: 19,
-    shadowOpacity: 0.06,
-    shadowColor: 'black',
   },
   button: {
     borderRadius: 5,
     backgroundColor: 'black',
     width: 175,
     height: 44,
-    shadowColor: '#101112',
-    shadowOffset: {width: 0, height: 7},
-    shadowRadius: 11,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowOpacity: 0.15,
   },
   buttonText: {
     backgroundColor: "transparent",
@@ -197,13 +202,6 @@ const styles = React.StyleSheet.create({
     overflow: 'hidden',
   },
 });
-
-export const TextShadow = {
-  shadowColor: '#004188',
-  shadowOpacity: 0.22,
-  shadowOffset: {width: 0, height: 5},
-  shadowRadius: 6
-};
 
 export const sharedStyles = React.StyleSheet.create({
   cellContent: {
@@ -227,9 +225,9 @@ export const sharedStyles = React.StyleSheet.create({
   },
   shadowText: {
     color: 'white',
-    ...TextShadow
   },
   boldText: {
+    color: 'white',
     fontFamily: 'ProximaNova-Bold',
     fontSize: 13,
     textAlign: 'center',

@@ -6,14 +6,13 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
-    "alt": "^0.18.2",
+    "alt": "^0.18.4",
     "alt-utils": "^1.0.0",
-    "fbjs": "^0.6.0",
-    "react-native": "^0.21.0",
-    "react-native-linear-gradient": "^1.5.2",
-    "react-native-root-siblings": "^1.0.7"
+    "react": "^0.14.7",
+    "react-native": "^0.22.2",
+    "react-native-linear-gradient": "^1.5.2"
   },
   "devDependencies": {
-    "flow-bin": "^0.22.1"
+    "babel-cli": "^6.6.5"
   }
 }

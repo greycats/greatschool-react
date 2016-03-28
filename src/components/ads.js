@@ -9,7 +9,7 @@ import React, {
   Image,
   Text,
 } from 'react-native';
-import {Button, sharedStyles, Row} from './UI';
+import {Button, sharedStyles, shadows, Row} from './UI';
 import LinearGradient from 'react-native-linear-gradient';
 import CellGroup from './cell_group';
 
@@ -23,7 +23,7 @@ export default class Ads extends Component {
       <View style={styles.ads}>
         <View style={styles.left}>
           <Text style={styles.header}>ARTICLE</Text>
-          <Text style={[sharedStyles.shadowText, styles.body]}>Are our screen-addicted kids frying their brains?</Text>
+          <Text style={[shadows.text, styles.body]}>Are our screen-addicted kids frying their brains?</Text>
           <Text style={styles.footer}>Content by: GreatKids</Text>
         </View>
         <View style={styles.right}>
@@ -172,6 +172,7 @@ const styles = React.StyleSheet.create({
     lineHeight: 24,
     letterSpacing: 0.6,
     marginTop: 11,
+    color: 'white',
   },
   footer: {
     marginTop: 9,

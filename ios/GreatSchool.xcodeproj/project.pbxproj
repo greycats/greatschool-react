@@ -24,11 +24,11 @@
 		4323EA38DAE0488460C3F9F1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07886F482145C5F0FC0ED97 /* Pods.framework */; };
 		502EFFC6A9274D878F7BA686 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6D65732F854023AC7BBA04 /* libBVLinearGradient.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		CF1D4B6D1C885610007896A1 /* Proxima Nova Reg.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF1D4B6C1C885610007896A1 /* Proxima Nova Reg.otf */; };
-		CF1D4B7A1C8856FB007896A1 /* Proxima Nova Sbold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF1D4B791C8856FB007896A1 /* Proxima Nova Sbold.otf */; };
+		CF1D4B6D1C885610007896A1 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF1D4B6C1C885610007896A1 /* ProximaNova-Regular.otf */; };
+		CF1D4B7A1C8856FB007896A1 /* ProximaNova-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF1D4B791C8856FB007896A1 /* ProximaNova-Semibold.otf */; };
 		CF1D4B881C88863C007896A1 /* GradientLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4B871C88863C007896A1 /* GradientLabel.swift */; };
 		CF1D4BAB1C888725007896A1 /* GradientLabelBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1D4BAA1C888725007896A1 /* GradientLabelBridge.m */; };
-		CF1D4BB81C8947D5007896A1 /* Proxima Nova Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF1D4BB71C8947D5007896A1 /* Proxima Nova Bold.otf */; };
+		CF1D4BB81C8947D5007896A1 /* ProximaNova-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CF1D4BB71C8947D5007896A1 /* ProximaNova-Bold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,12 +143,12 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		A7389EA75FADA799DA760133 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		CF1D4B6C1C885610007896A1 /* Proxima Nova Reg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Reg.otf"; sourceTree = "<group>"; };
-		CF1D4B791C8856FB007896A1 /* Proxima Nova Sbold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Sbold.otf"; sourceTree = "<group>"; };
+		CF1D4B6C1C885610007896A1 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ProximaNova-Regular.otf"; path = "../android/app/src/main/assets/fonts/ProximaNova-Regular.otf"; sourceTree = "<group>"; };
+		CF1D4B791C8856FB007896A1 /* ProximaNova-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ProximaNova-Semibold.otf"; path = "../android/app/src/main/assets/fonts/ProximaNova-Semibold.otf"; sourceTree = "<group>"; };
 		CF1D4B861C88863B007896A1 /* GreatSchool-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GreatSchool-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF1D4B871C88863C007896A1 /* GradientLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientLabel.swift; sourceTree = "<group>"; };
 		CF1D4BAA1C888725007896A1 /* GradientLabelBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientLabelBridge.m; sourceTree = "<group>"; };
-		CF1D4BB71C8947D5007896A1 /* Proxima Nova Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Bold.otf"; sourceTree = "<group>"; };
+		CF1D4BB71C8947D5007896A1 /* ProximaNova-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ProximaNova-Bold.otf"; path = "../android/app/src/main/assets/fonts/ProximaNova-Bold.otf"; sourceTree = "<group>"; };
 		D07886F482145C5F0FC0ED97 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6D65732F854023AC7BBA04 /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -259,9 +259,9 @@
 		13B07FAE1A68108700A75B9A /* GreatSchool */ = {
 			isa = PBXGroup;
 			children = (
-				CF1D4B6C1C885610007896A1 /* Proxima Nova Reg.otf */,
-				CF1D4B791C8856FB007896A1 /* Proxima Nova Sbold.otf */,
-				CF1D4BB71C8947D5007896A1 /* Proxima Nova Bold.otf */,
+				CF1D4B6C1C885610007896A1 /* ProximaNova-Regular.otf */,
+				CF1D4B791C8856FB007896A1 /* ProximaNova-Semibold.otf */,
+				CF1D4BB71C8947D5007896A1 /* ProximaNova-Bold.otf */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -584,11 +584,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF1D4B6D1C885610007896A1 /* Proxima Nova Reg.otf in Resources */,
-				CF1D4B7A1C8856FB007896A1 /* Proxima Nova Sbold.otf in Resources */,
+				CF1D4B6D1C885610007896A1 /* ProximaNova-Regular.otf in Resources */,
+				CF1D4B7A1C8856FB007896A1 /* ProximaNova-Semibold.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				CF1D4BB81C8947D5007896A1 /* Proxima Nova Bold.otf in Resources */,
+				CF1D4BB81C8947D5007896A1 /* ProximaNova-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

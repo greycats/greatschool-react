@@ -10,7 +10,7 @@ import React, {
   Platform,
   Image,
 } from 'react-native';
-import {sharedStyles} from './UI';
+import {sharedStyles, shadows} from './UI';
 import {SmallBadge} from './badge';
 
 export default class SchoolIcon extends Component {
@@ -49,7 +49,7 @@ export default class SchoolIcon extends Component {
         <Image source={this.imageForName(name)} />
         </View>
         <SmallBadge style={styles.badge} number={count} />
-        <Text style={[sharedStyles.shadowText, sharedStyles.boldText, styles.schoolCaption, textSize]}>{name.toUpperCase()}</Text>
+        <Text style={[shadows.text, sharedStyles.boldText, styles.schoolCaption, textSize]}>{name.toUpperCase()}</Text>
       </TouchableOpacity>
     );
   }

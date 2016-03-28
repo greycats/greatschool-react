@@ -1,3 +1,7 @@
+/**
+@providesModule Badge
+@flow
+*/
 'use strict';
 
 import React, {Component, View, Image, Text} from 'react-native';
@@ -31,7 +35,7 @@ export class SmallBadge extends Component {
     let {number, style, ...otherProps} = this.props;
     let opacity = number ? 1 : 0;
     return (
-      <View style={[styles.wrapper, styles.smallBadgeWrapper, style, {opacity}]}>
+      <View style={[styles.smallBadgeWrapper, style, {opacity}]}>
         <Text style={[sharedStyles.buttonText, styles.smallBadge]}>{number}</Text>
       </View>
     );
@@ -55,6 +59,7 @@ const styles = React.StyleSheet.create({
   },
   smallBadgeWrapper: {
     width: 23,
+    justifyContent: 'center',
     height: 23,
     borderRadius: 11.5,
     backgroundColor: '#0B4782',

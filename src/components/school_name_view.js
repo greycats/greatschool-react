@@ -1,6 +1,7 @@
 'use strict';
 
 import React, {PropTypes, Component, View, Image, Text} from 'react-native';
+import {shadows} from './UI';
 
 export default class SchoolNameView extends Component {
   static propTypes = {
@@ -18,7 +19,7 @@ export default class SchoolNameView extends Component {
       <Image style={styles.icon} source={icon} />
       </View>
       </View>
-      <Text style={styles.name}>{name}</Text>
+      <Text style={[shadows.text2, styles.name]}>{name}</Text>
       </View>
     );
   }
@@ -51,11 +52,7 @@ const styles = React.StyleSheet.create({
     fontSize: 20,
     lineHeight: 36,
     color: 'white',
-    shadowColor: "black",
     textAlign: 'center',
-    shadowOffset: {width: 0, height: 2},
-    shadowRadius: 19,
-    shadowOpacity: 0.22,
   },
   icon: {
     marginBottom: 3,

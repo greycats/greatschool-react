@@ -9,22 +9,26 @@
 
 # Ugh
 .*/node_modules/babel.*
-.*/node_modules/flux.*
-.*/node_modules/react-native-linear-gradient.*
-.*/node_modules/react-native.*
 .*/node_modules/babylon.*
 .*/node_modules/invariant.*
-.*/node_modules/y18n.*
 
 # Ignore react and fbjs where there are overlaps, but don't ignore
 # anything that react-native relies on
-.*/node_modules/fbjs.*
+.*/node_modules/fbjs/lib/Map.js
+.*/node_modules/fbjs/lib/fetch.js
+.*/node_modules/fbjs/lib/ExecutionEnvironment.js
+.*/node_modules/fbjs/lib/ErrorUtils.js
 
 # Flow has a built-in definition for the 'react' module which we prefer to use
 # over the currently-untyped source
 .*/node_modules/react/react.js
 .*/node_modules/react/lib/React.js
 .*/node_modules/react/lib/ReactDOM.js
+
+.*/__mocks__/.*
+.*/__tests__/.*
+
+.*/commoner/test/source/widget/share.js
 
 # Ignore commoner tests
 .*/node_modules/commoner/test/.*
@@ -46,6 +50,9 @@ node_modules/react-native/Libraries/react-native/react-native-interface.js
 [options]
 module.system=haste
 
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
+
 munge_underscores=true
 
 module.name_mapper='^image![a-zA-Z0-9$_-]+$' -> 'GlobalImageStub'
@@ -60,4 +67,4 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowIssue\\((\\(>=0\\.\\(2[0-1]\\|1[0-9]\\|[0-9
 suppress_comment=\\(.\\|\n\\)*\\$FlowFixedInNextDeploy
 
 [version]
-0.22.1
+0.21.0

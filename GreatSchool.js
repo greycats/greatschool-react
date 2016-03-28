@@ -1,3 +1,6 @@
+/**
+* @flow
+*/
 'use strict';
 
 import React from 'react-native';
@@ -10,16 +13,19 @@ import SchoolScene from './src/scenes/SchoolScene';
 import MySchoolsScene from './src/scenes/MySchoolsScene';
 import GreatKidsScene from './src/scenes/GreatKidsScene';
 
+const route = {
+  'home-step1': <HomeScene />,
+  'home-step2': <PickSchoolScene />,
+  'search': <SearchScene />,
+  'school': <SchoolScene />,
+  'kids': <GreatKidsScene />,
+  'schools': <MySchoolsScene />
+};
+
 export default class GreatSchool extends React.Component {
+  _tabbar: any;
+
   render() {
-    let route = {
-      'home-step1': <HomeScene />,
-      'home-step2': <PickSchoolScene />,
-      'search': <SearchScene />,
-      'school': <SchoolScene />,
-      'kids': <GreatKidsScene />,
-      'schools': <MySchoolsScene />
-    };
     return (
       <Background type="home-step1">
         <Navigator map={route} tabbar={() => {return this._tabbar}} />

@@ -1,6 +1,7 @@
 'use strict';
 
 import React, {Component, View, Text} from 'react-native';
+import {shadows} from './UI';
 
 export class Sections extends Component {
   render() {
@@ -8,7 +9,7 @@ export class Sections extends Component {
     return (
       <View style={[styles.container, style]} {...otherProps}>
         <View style={styles.shadowWrapper}>
-          <View style={styles.shadow} />
+          <View style={[shadows.text3, styles.shadow]} />
         </View>
         {children}
       </View>
@@ -52,10 +53,6 @@ const styles = React.StyleSheet.create({
     height: 10,
     marginTop: -10,
     overflow: 'visible',
-    shadowColor: 'black',
-    shadowOpacity: 0.2,
-    shadowOffset: {width: 0, height: 2},
-    shadowRadius: 16,
   },
   headerText: {
     marginLeft: 20,
